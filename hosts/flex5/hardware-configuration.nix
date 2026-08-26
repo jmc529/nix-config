@@ -1,0 +1,1 @@
+# generate with sudo nixos-generate-config --show-hardware-config > file
