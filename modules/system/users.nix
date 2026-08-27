@@ -6,6 +6,10 @@
     description = "Joe";
     extraGroups = [ "wheel" "networkmanager" "docker" ];
     shell = pkgs.zsh;
+    packages = with pkgs; [
+      kdePackages.kate
+    #  thunderbird
+    ];
   };
 
   programs.zsh.enable = true;
