@@ -4,11 +4,11 @@ Personal NixOS config, built using plasma manager, sylix, flakes, and home manag
 
 ## Install
 
-Ona machine with NixOS run:
+On a machine with NixOS run:
 
 ```sh
-git clone <repo-url> ~/nix
-cd ~/nix
+git clone git@github.com:jmc529/nix-config.git ~/nix-config
+cd ~/nix-config
 
 # Generate machine hardware config
 sudo nixos-generate-config --show-hardware-config > hosts/<name>/hardware-configuration.nix
