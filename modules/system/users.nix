@@ -11,6 +11,4 @@
     #  thunderbird
     ];
   };
-
-  programs.zsh.enable = true;
 }

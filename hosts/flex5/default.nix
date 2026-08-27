@@ -8,7 +8,6 @@
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
 
     ../../modules/system
-    ../../modules/optional/gaming.nix
   ];
 
   networking.hostName = "flex5";
@@ -29,11 +28,11 @@
 
   system.stateVersion = "26.05";
 
-  home-manager.user.joe = {
+  home-manager.users.joe = {
     imports = [
       ../../modules/home
       # Optional windows support - this host will use wine + bottles not winapps
       ../../modules/optional/wine.nix
-    ]
-  }
+    ];
+  };
 }

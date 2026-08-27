@@ -19,5 +19,5 @@
 
     # music
     tidal-hifi
-  ]
+  ];
 }

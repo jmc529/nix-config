@@ -27,7 +27,7 @@ in
         mechatroner.rainbow-csv
         streetsidesoftware.code-spell-checker
         pkief.material-icon-theme
-        benjaminanderson.midnight-pastel
+        benjaminmandersen.midnight-pastel
         simonsiefke.svg-preview
         markis.code-coverage
         christian-kohler.path-intellisense
@@ -85,8 +85,8 @@ in
           "editor.formatOnType" = true;
           "editor.formatOnSave" = true;
           "editor.defaultFormatter" = "ms-python.blackformatter";
-        }
-      }
-    }
-  }
+        };
+      };
+    };
+  };
 }
