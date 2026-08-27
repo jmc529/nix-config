@@ -6,6 +6,12 @@
     plugins = [ pkgs.networkmanager-openvpn ];
   };
 
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
   hardware.bluetooth = {
   enable = true;
   powerOnBoot = true;
@@ -18,4 +24,7 @@
   };
 
   services.printing.enable = true;
+  services.openssh = {
+    enable = true;
+  };
 }
