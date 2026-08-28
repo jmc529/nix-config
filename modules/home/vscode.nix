@@ -6,7 +6,8 @@ in
 {
   programs.vscode = {
     enable = true;
-
+    package = pkgs.vscodium;
+    
     profiles.default = {
       extensions = with marketplace; [
         # general/editor/git/theme
@@ -62,6 +63,10 @@ in
         ms-vscode-remote.remote-containers
 
         ms-vsliveshare.vsliveshare
+
+        # Nix
+        jnoortheen.nix-ide
+        
       ];
 
       userSettings = {
@@ -69,17 +74,17 @@ in
         "workbench.iconTheme" = "material-icon-theme";
         "workbench.startupEditor" = "none";
 
-        "editor.fonFamily" = "'FireCode Nerd Font', monospace";
+        "editor.fontFamily" = "'FireCode Nerd Font', monospace";
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
         "editor.formatOnSaveMode" = "modifications";
-        "editor.guides.bracketPairs" = "true";
+        "editor.guides.bracketPairs" = true;
 
-        "git.autofetch" = "true";
-        "git.confirmSync" = "false";
-        "git.suggestSmartCommit" = "true";
+        "git.autofetch" = true;
+        "git.confirmSync" = false;
+        "git.suggestSmartCommit" = true;
 
         "telemetry.telemetryLevel" = "off";
-        "explorer.confirmDelete" = "false";
+        "explorer.confirmDelete" = false;
 
         "[python]" = {
           "editor.formatOnType" = true;

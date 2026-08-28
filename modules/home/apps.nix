@@ -14,10 +14,11 @@
     bruno
     httpie
 
-    # file mngmt
-    thunar
-
     # music
     tidal-hifi
+
+    # Management
+    bitwarden-desktop
+    sioyek
   ];
 }
