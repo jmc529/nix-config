@@ -3,11 +3,10 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/system
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-
-    ../../modules/system
   ];
 
   networking.hostName = "flex5";
@@ -28,10 +27,12 @@
 
   system.stateVersion = "26.05";
 
+  # touch/rotation
+  services.libinput.enable = true;
+
   home-manager.users.joe = {
     imports = [
       ../../modules/home
-      # Optional windows support - this host will use wine + bottles not winapps
       ../../modules/optional/wine.nix
     ];
   };

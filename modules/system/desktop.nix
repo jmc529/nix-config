@@ -7,8 +7,15 @@
   };
 
   services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    kate
+    konsole
+    discover
+    kwrite
+    qrca
+    elisa
+  ];
 
-  # touch/rotation
-  # TODO check if needed or can be in hosts
-  services.libinput.enable = true;
+  # firmware updates since I am removing discover; CLI fwupdmgr
+  services.fwupd.enable = true;
 }

@@ -12,11 +12,6 @@
     enable = true;
   };
 
-  programs.yazi = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   programs.btop = {
     enable = true;
   };
