@@ -27,14 +27,14 @@ in
         mechatroner.rainbow-csv
         streetsidesoftware.code-spell-checker
         pkief.material-icon-theme
-        benjaminanderson.midnight-pastel
+        benjaminmandersen.midnight-pastel
         simonsiefke.svg-preview
         markis.code-coverage
         christian-kohler.path-intellisense
         christian-kohler.npm-intellisense
         formulahendry.auto-close-tag
         formulahendry.code-runner
-        doxundermoon.shell-format
+        foxundermoon.shell-format
         rohit-gohri.format-code-action
         rvest.vs-code-prettier-eslint
 
@@ -42,8 +42,8 @@ in
         ms-python.python
         ms-python.vscode-pylance
         ms-python.debugpy
-        ms-python.blackformatter
-        ms-python.vsc-python-envs
+        ms-python.black-formatter
+        ms-python.vscode-python-envs
         kevinrose.vsc-python-indent
         njpwerner.autodocstring
 
@@ -85,8 +85,8 @@ in
           "editor.formatOnType" = true;
           "editor.formatOnSave" = true;
           "editor.defaultFormatter" = "ms-python.blackformatter";
-        }
-      }
-    }
-  }
+        };
+      };
+    };
+  };
 }

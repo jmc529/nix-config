@@ -25,5 +25,5 @@
   };
 
   # plasma is themed separately - modules/home/plasma.nix
-  stylix.targets.plasma.enable = true;
+#   stylix.targets.kde.enable = true;
 }

@@ -2,7 +2,7 @@
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes"];
-  nixpkgs.convifg.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   # Trim old gens
   nix.gc = {
@@ -11,7 +11,7 @@
     options = "--delete-older-than 30d";
   };
 
-  boot.loader.system-boot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable sound with pipewire.

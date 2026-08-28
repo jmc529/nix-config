@@ -13,5 +13,5 @@ cd ~/nix-config
 # Generate machine hardware config
 sudo nixos-generate-config --show-hardware-config > hosts/<name>/hardware-configuration.nix
 
-sudo nixos-rebuild switch --flake .#<name>
+sudo nixos-rebuild switch --flake ./#<name>
 ```
