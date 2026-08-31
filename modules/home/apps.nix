@@ -19,6 +19,5 @@
 
     # Management
     bitwarden-desktop
-    sioyek
   ];
 }

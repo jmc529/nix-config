@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../modules/system
+    ../../modules/system/optional
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-pc-laptop
     inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
@@ -30,10 +31,15 @@
   # touch/rotation
   services.libinput.enable = true;
 
+  modules.optional.gaming.enable = false;
+  modules.optional.winapps.enable = false;
+
   home-manager.users.joe = {
     imports = [
       ../../modules/home
-      ../../modules/optional/wine.nix
+      ../../modules/home/optional
     ];
+
+    modules.optional.wine.enable = true;
   };
 }
