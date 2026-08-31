@@ -11,7 +11,8 @@
     kate
     konsole
     discover
-    kwrite
+    plasma-workspace-wallpapers
+    khelpcenter
     qrca
     elisa
   ];

@@ -1,16 +1,14 @@
 { config, lib, pkgs, ... }:
 
 {
-  # TODO swap background
-  stylix.image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.gnomeFilePath;
+  stylix.image = ./assets/ponyo-background.png;
 
-  # verify this is what I want
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/city-lights.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/pastelon-de-amarillos-dark.yaml";
 
   stylix.fonts = {
     monospace = {
       package = pkgs.nerd-fonts.fira-code;
-      name = "FiraCode Nerd Font";
+      name = "FiraCode Nerd Font Mono";
     };
 
     sansSerif = {
@@ -18,12 +16,19 @@
       name = "FiraCode Nerd Font";
     };
 
-    serif = {
-      package = pkgs.nerd-fonts.fira-code;
-      name = "FiraCode Nerd Font";
+
+    emoji = {
+      package = pkgs.noto-fonts-color-emoji;
+      name = "Noto Color Emoji";
     };
   };
+  
+  stylix.fonts.serif = config.stylix.fonts.sansSerif;
 
-  # plasma is themed separately - modules/home/plasma.nix
-#   stylix.targets.kde.enable = true;
+  stylix.targets.kde = {
+    enable = true;
+    widgetStyle = "Breeze";           # keep default — anything else risks incompatibility per the docs
+    decorations = "org.kde.breeze";   # same reasoning
+    applicationStyle = "Breeze";
+  };
 }
