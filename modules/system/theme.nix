@@ -25,10 +25,5 @@
   
   stylix.fonts.serif = config.stylix.fonts.sansSerif;
 
-  stylix.targets.kde = {
-    enable = true;
-    widgetStyle = "Breeze";           # keep default — anything else risks incompatibility per the docs
-    decorations = "org.kde.breeze";   # same reasoning
-    applicationStyle = "Breeze";
-  };
+  # stylix.targets.kde.enable = true;
 }
