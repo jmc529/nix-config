@@ -4,7 +4,7 @@ let
   marketplace = pkgs.vscode-marketplace;
 in
 {
-  programs.vscode = {
+  programs.vscodium = {
     enable = true;
     package = pkgs.vscodium;
     
