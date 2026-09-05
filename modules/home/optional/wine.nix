@@ -7,7 +7,7 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      wineWowPackages.stable
+      wineWow64Packages.stable
       winetricks
       bottles
     ];
