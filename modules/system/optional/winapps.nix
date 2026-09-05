@@ -4,7 +4,7 @@ let
   system = pkgs.system;
 in
 {
-  optiooptions.modules.optional.winapps.enable = lib.mkEnableOption "WinApps integration for running Windows apps via RDP/VM";
+  options.modules.optional.winapps.enable = lib.mkEnableOption "WinApps integration for running Windows apps via RDP/VM";
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
