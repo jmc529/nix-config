@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -31,5 +31,11 @@
 
     # https://nixsoftware.org/en/packages/devtoolbox?channel=2605
     devtoolbox
+
+    # https://helix-editor.com/
+    helix
+
+    # https://opencode.ai/
+    opencode
   ];
 }

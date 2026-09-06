@@ -34,12 +34,17 @@
   modules.optional.gaming.enable = false;
   modules.optional.winapps.enable = false;
 
-  home-manager.users.joe = {
-    imports = [
-      ../../modules/home
-      ../../modules/home/optional
-    ];
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    
+    users.joe = {
+      imports = [
+        ../../modules/home
+        ../../modules/home/optional
+      ];
 
-    modules.optional.wine.enable = true;
+      modules.optional.wine.enable = true;
+    };
   };
 }
