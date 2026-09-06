@@ -21,4 +21,11 @@ sudo nixos-rebuild switch --flake ./#<name>
 ```sh
 # To recreate the pre-commit, run:
 nix develop
+
+# Manual commands from the pre-commit
+nix run nixpkgs#statix -- check .
+nix run nixpkgs#deadnix -- .
+
+# To lint
+nix flake check
 ```

@@ -2,7 +2,7 @@
 
 let
   cfg = config.modules.optional.winapps;
-  system = pkgs.system;
+  inherit (pkgs) system;
 in
 {
   options.modules.optional.winapps.enable = lib.mkEnableOption "WinApps integration for running Windows apps via RDP/VM";

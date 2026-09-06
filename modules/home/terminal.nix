@@ -1,16 +1,18 @@
 {
-  programs.kitty = {
-    enable = true;
-    settings = {
-      confirm_os_window_close = 0;
+  programs = {
+    kitty = {
+      enable = true;
+      settings = {
+        confirm_os_window_close = 0;
+      };
     };
-  };
 
-  programs.zellij = {
-    enable = true;
-  };
+    zellij = {
+      enable = true;
+    };
 
-  programs.btop = {
-    enable = true;
+    btop = {
+      enable = true;
+    };
   };
 }
