@@ -15,3 +15,10 @@ sudo nixos-generate-config --show-hardware-config > hosts/<name>/hardware-config
 
 sudo nixos-rebuild switch --flake ./#<name>
 ```
+
+### Develop
+
+```sh
+# To recreate the pre-commit, run:
+nix develop
+```
