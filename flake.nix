@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
     git-hooks.url = "github:cachix/git-hooks.nix";
 
     home-manager = {
@@ -48,12 +48,14 @@
         home-manager.nixosModules.home-manager
         { nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ]; }
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = specialArgs;
-          home-manager.sharedModules = [
-            plasma-manager.homeModules.plasma-manager
-          ];
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = specialArgs;
+            sharedModules = [
+              plasma-manager.homeModules.plasma-manager
+            ];
+          };
         }
       ];
     };
@@ -61,6 +63,7 @@
     checks.${system}.pre-commit-check = git-hooks.lib.${system}.run {
       src = ./.;
       hooks.deadnix.enable = true;
+      hooks.statix.enable = true;
     };
 
     devShells.${system}.default = pkgs.mkShell {

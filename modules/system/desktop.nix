@@ -1,12 +1,17 @@
 { pkgs, ... }:
 
 {
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
+  services = {
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+
+    desktopManager.plasma6.enable = true;
+    # firmware updates since I am removing discover; CLI fwupdmgr
+    fwupd.enable = true;
   };
 
-  services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     kate
     konsole
@@ -15,9 +20,5 @@
     khelpcenter
     qrca
     elisa
-    kde-gtk-config
-  ];
-
-  # firmware updates since I am removing discover; CLI fwupdmgr
-  services.fwupd.enable = true;
+  ];  
 }
