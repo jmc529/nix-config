@@ -15,6 +15,7 @@
     khelpcenter
     qrca
     elisa
+    kde-gtk-config
   ];
 
   # firmware updates since I am removing discover; CLI fwupdmgr
