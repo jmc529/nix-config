@@ -3,8 +3,8 @@
 {
   stylix.enable = true;
   stylix.image = "${inputs.self}/assets/ponyo-background.png";
-  # 0x96f, danqing, decaf, material-darker, penumbra-dark, 
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/penumbra-dark.yaml";
+  # 0x96f, danqing, decaf, material-darker, penumbra-dark
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/danqing.yaml";
   stylix.polarity = "dark";
 
   stylix.fonts = {
