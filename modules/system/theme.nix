@@ -1,27 +1,34 @@
-{ config, lib, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
-  stylix.image = ./assets/ponyo-background.png;
-
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/pastelon-de-amarillos-dark.yaml";
+  stylix.enable = true;
+  stylix.image = "${inputs.self}/assets/ponyo-background.png";
+  # 0x96f, danqing, decaf, material-darker, penumbra-dark, 
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/penumbra-dark.yaml";
+  stylix.polarity = "dark";
 
   stylix.fonts = {
+    emoji = {
+      package = pkgs.openmoji-color;
+      name = "OpenMoji";
+    };
     monospace = {
       package = pkgs.nerd-fonts.fira-code;
       name = "FiraCode Nerd Font Mono";
     };
-
     sansSerif = {
-      package = pkgs.nerd-fonts.fira-code;
-      name = "FiraCode Nerd Font";
+      package = pkgs.noto-fonts;
+      name = "Noto Sans";
     };
-
-
-    emoji = {
-      package = pkgs.noto-fonts-color-emoji;
-      name = "Noto Color Emoji";
+    serif = {
+      package = pkgs.noto-fonts;
+      name = "Noto Serif";
+    };
+    sizes = {
+      applications = 10;
+      desktop = 10;
+      popups = 10;
+      terminal = 10;
     };
   };
-  
-  stylix.fonts.serif = config.stylix.fonts.sansSerif;
 }

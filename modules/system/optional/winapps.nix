@@ -1,4 +1,5 @@
 { config, lib, pkgs, inputs, ... }:
+
 let
   cfg = config.modules.optional.winapps;
   system = pkgs.system;

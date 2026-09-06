@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   marketplace = pkgs.vscode-marketplace;
@@ -16,28 +16,24 @@ in
         naumovs.color-highlight
         editorconfig.editorconfig
         esbenp.prettier-vscode
-        dbaeumer.vscode-eslint
         mhutchie.git-graph
         waderyan.gitblame
         donjayamanne.githistory
         codezombiech.gitignore
         gruntfuggly.todo-tree
         wayou.vscode-todo-highlight
-        davidanson.vscode-markdownlint
-        yzhang.markdown-all-in-one
         mechatroner.rainbow-csv
         streetsidesoftware.code-spell-checker
         pkief.material-icon-theme
         benjaminmandersen.midnight-pastel
         simonsiefke.svg-preview
-        markis.code-coverage
+        tenninebt.vscode-koverage
         christian-kohler.path-intellisense
         christian-kohler.npm-intellisense
         formulahendry.auto-close-tag
         formulahendry.code-runner
         foxundermoon.shell-format
         rohit-gohri.format-code-action
-        rvest.vs-code-prettier-eslint
 
         # Python
         ms-python.python
@@ -45,16 +41,11 @@ in
         ms-python.debugpy
         ms-python.black-formatter
         ms-python.vscode-python-envs
-        kevinrose.vsc-python-indent
         njpwerner.autodocstring
 
         # Frontend
-        bradlc.vscode-tailwindcss
         svelte.svelte-vscode
-        syler.sass-indented
         zignd.html-css-class-completion
-        graphql.vscode-graphql
-        graphql.vscode-graphql-syntax
 
         # Docker
         docker.docker
@@ -70,11 +61,13 @@ in
       ];
 
       userSettings = {
-        "workbench.colorTheme" = "Midnight Pastel";
+        # Set by stlyix 
+        # "workbench.colorTheme" = "Midnight Pastel";
         "workbench.iconTheme" = "material-icon-theme";
         "workbench.startupEditor" = "none";
 
-        "editor.fontFamily" = "'FireCode Nerd Font', monospace";
+        # Set by stylix 
+        # "editor.fontFamily" = "'FireCode Nerd Font', monospace";
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
         "editor.formatOnSaveMode" = "modifications";
         "editor.guides.bracketPairs" = true;
@@ -91,6 +84,11 @@ in
           "editor.formatOnSave" = true;
           "editor.defaultFormatter" = "ms-python.blackformatter";
         };
+
+        "cSpell.userWords" = [
+          "stylix"
+          "pkgs"
+        ];
       };
     };
   };
