@@ -31,9 +31,5 @@
     bitwarden-desktop
     # update nix pkgs https://github.com/Mic92/nix-update
     nix-update
-
-    # AI
-    # nix mcp (AI model context protocal) gives info on nix https://github.com/utensils/mcp-nixos
-    mcp-nixos
   ];
 }
