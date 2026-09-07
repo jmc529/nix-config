@@ -1,14 +1,40 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let
   cfg = config.modules.optional.opencode;
+  # https://github.com/archie-judd/agent-sandbox.nix
+  agentSandbox = import inputs.agent-sandbox-nix { inherit pkgs; };
+
+  opencodeSandboxed = agentSandbox.mkSandbox {
+    pkg = pkgs.opencode;
+    binName = "opencode";
+    outName = "opencode";
+
+    allowedPackages = agentSandbox.commonTools ++ [
+      pkgs.git
+      pkgs.nodejs
+      pkgs.mcp-nixos
+    ];
+
+    rwDirs = [
+      "$HOME/.config/opencode"
+      "$HOME/.local/share/opencode"
+    ];
+
+    roFiles = [ "$HOME/.config/git/config" ];
+
+    # Ollama and mcp-nixos (if it ever needs to phone home) live locally;
+    # 11434 is the port that actually matters for talking to Ollama
+    allowedHostPorts = [ 11434 ];
+  };
 in
 {
   options.modules.optional.opencode.enable = lib.mkEnableOption "Opencode for running coding agents locally";
-  
+
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      # nix mcp (AI model context protocal) gives info on nix https://github.com/utensils/mcp-nixos
-      mcp-nixos
+    home.packages = [
+      # nix mcp (AI model context protocol) gives info on nix https://github.com/utensils/mcp-nixos
+      pkgs.mcp-nixos
+      opencodeSandboxed
     ];
 
     programs.opencode = {
