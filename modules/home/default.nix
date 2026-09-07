@@ -4,6 +4,8 @@
     ./firefox.nix
     ./git.nix
     ./ide.nix
+    ./librewolf.nix
+    ./opencode.nix
     ./plasma.nix
     ./shell.nix
     ./terminal.nix
