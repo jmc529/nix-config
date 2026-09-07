@@ -29,5 +29,9 @@
       enable = true;
       enableZshIntegration = true;
     };
+
+    npm = {
+      enable = true;
+    };
   };
 }
