@@ -13,6 +13,10 @@ cd ~/nix-config
 # Generate machine hardware config
 sudo nixos-generate-config --show-hardware-config > hosts/<name>/hardware-configuration.nix
 
+# Generate kde config
+nix run github:nix-community/plasma-manager > plasma-settings.nix
+
+# Build and switch config
 sudo nixos-rebuild switch --flake ./#<name>
 ```
 
