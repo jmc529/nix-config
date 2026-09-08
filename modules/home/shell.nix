@@ -1,3 +1,5 @@
+{ inputs, ... }:
+
 {
   programs = { 
     zsh = {
@@ -5,14 +7,21 @@
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
 
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" ];
+      };
+
       shellAliases = {
-        ls = "eza -l";
+        ls = "eza --icons=auto";
+        cd = "z";
       };
     };
   
     starship = {
       enable = true;
       enableZshIntegration = true;
+      settings = builtins.fromTOML (builtins.readFile "${inputs.self}/assets/starship.toml");
     };
   
     zoxide = {
