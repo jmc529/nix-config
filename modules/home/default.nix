@@ -25,5 +25,11 @@
     opencode.enable = true;
     vscodium.enable = true;
     zellij.enable = true;
+    librewolf = {
+      enable = true;
+      fonts.override = {
+        sizes.applications = 12;
+      };
+    };
   };
 }
