@@ -31,7 +31,19 @@
       };
     };
 
-    desktop.widgets = [{ name = "org.kde.plasma.colorpicker"; }];
+    desktop.widgets = [
+    {
+      name = "org.kde.plasma.colorpicker";
+      position = {
+        horizontal = 10;
+        vertical = 10;
+      };
+      size = {
+        width = 100;
+        height = 100;
+      };
+    }
+  ];
 
     panels = [
       {
