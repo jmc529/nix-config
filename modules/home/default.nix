@@ -1,7 +1,6 @@
 {
   imports = [
     ./apps.nix
-    ./firefox.nix
     ./git.nix
     ./ide.nix
     ./librewolf.nix
