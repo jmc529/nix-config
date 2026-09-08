@@ -39,8 +39,8 @@
         vertical = 10;
       };
       size = {
-        width = 100;
-        height = 100;
+        width = 50;
+        height = 25;
       };
     }
   ];
@@ -48,6 +48,7 @@
     panels = [
       {
         location = "bottom";
+        floating = true;
         widgets = [
           {
             name = "org.kde.plasma.kickoff";
