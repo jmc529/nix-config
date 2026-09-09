@@ -164,6 +164,8 @@ in
           # Nix
           jnoortheen.nix-ide
         ];
+      };
+    };
 
         userSettings = {
           # Set by stylix
