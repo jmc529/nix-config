@@ -1,4 +1,5 @@
-{ config, lib, ... }:
+# modules/optional/gaming.nix
+{ config, lib, pkgs, ... }:
 let
   cfg = config.modules.optional.gaming;
 in
@@ -19,5 +20,18 @@ in
       enable = true;
       enable32Bit = true;
     };
+
+    environment.systemPackages = with pkgs; [
+      itch                # itch.io client
+
+      dolphin-emu         # GameCube / Wii
+      duckstation          # PS1 (more accurate than PCSX)
+      pcsx2                # PS2
+      rpcs3                # PS3
+      melonDS              # Nintendo DS
+      eden                  # Switch (actively-maintained Yuzu/Suyu successor)
+      mgba                 # GBA / GB / GBC
+      retroarch            # multi-system frontend + cores
+    ];
   };
 }

@@ -72,7 +72,6 @@ in
           leetcode.vscode-leetcode
           circleci.circleci
           firefox-devtools.vscode-firefox-debug
-          equinusocio.vsc-material-theme-icons
 
           # Python
           ms-python.python

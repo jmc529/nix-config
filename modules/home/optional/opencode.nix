@@ -46,7 +46,7 @@ in
           command = [ "mcp-nixos" ];
           environment.MCP_NIXOS_TRANSPORT = "stdio";
         };
-        model = "ollama/qwen2.5-coder:14b";
+        model = "ollama/qwen3-coder:30b";
         provider = {
           ollama = {
             npm = "@ai-sdk/openai-compatible";
@@ -55,8 +55,8 @@ in
               baseURL = "http://127.0.0.1:11434/v1";
             };
             models = {
-              "qwen2.5-coder:14b" = {
-                name = "Qwen 2.5 Coder 14B (Ollama)";
+              "qwen3-coder:30b" = {
+                name = "Qwen 3 Coder 30B (Ollama)";
               };
             };
           };
