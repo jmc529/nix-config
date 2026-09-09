@@ -31,19 +31,23 @@
       url = "github:winapps-org/winapps";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agent-sandbox-nix = {
+      url = "github:archie-judd/agent-sandbox.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, stylix, git-hooks, nix-vscode-extensions, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, plasma-manager, stylix, git-hooks, nix-vscode-extensions, agent-sandbox-nix, ... }@inputs:
   let
     system = "x86_64-linux";
     specialArgs = { inherit inputs; };
     pkgs = nixpkgs.legacyPackages.${system};
-  in
-  {
-    nixosConfigurations.flex5 = nixpkgs.lib.nixosSystem {
+
+    mkHost = hostPath: nixpkgs.lib.nixosSystem {
       inherit specialArgs;
       modules = [
-        ./hosts/flex5
+        hostPath
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         { nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ]; }
@@ -52,12 +56,16 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = specialArgs;
-            sharedModules = [
-              plasma-manager.homeModules.plasma-manager
-            ];
+            sharedModules = [ plasma-manager.homeModules.plasma-manager ];
           };
         }
       ];
+    };
+  in
+  {
+    nixosConfigurations = {
+      flex5 = mkHost ./hosts/flex5;
+      aorus = mkHost ./hosts/aorus;
     };
 
     checks.${system}.pre-commit-check = git-hooks.lib.${system}.run {

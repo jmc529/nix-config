@@ -25,10 +25,9 @@ in
       itch                # itch.io client
 
       dolphin-emu         # GameCube / Wii
-      duckstation          # PS1 (more accurate than PCSX)
       pcsx2                # PS2
       rpcs3                # PS3
-      melonDS              # Nintendo DS
+      melonds              # Nintendo DS
       eden                  # Switch (actively-maintained Yuzu/Suyu successor)
       mgba                 # GBA / GB / GBC
       retroarch            # multi-system frontend + cores

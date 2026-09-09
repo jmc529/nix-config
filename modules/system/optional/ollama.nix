@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   cfg = config.modules.optional.ollama;
@@ -10,7 +10,7 @@ in
     services = {
       ollama = {
         enable = true;
-        acceleration = "rocm";
+        package = pkgs.ollama-rocm;
 #         May need this if Ollama doesn't detect the 7800 XT correctly under ROCm (some RDNA3 cards need a gfx-version override)
 #         environmentVariablesHSA_OVERRIDE_GFX_VERSION = "11.0.0";
         loadModels = [ "qwen3-coder:30b" "gpt-oss:20b" ] ;
