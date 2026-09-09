@@ -64,7 +64,6 @@ in
           chrmarti.regex
           quicktype.quicktype
           jock.svg
-          cssho.vscode-svgviewer
           hediet.vscode-drawio
           randomfractalsinc.vscode-data-preview
           maziac.binary-file-viewer
@@ -72,7 +71,6 @@ in
           leetcode.vscode-leetcode
           circleci.circleci
           firefox-devtools.vscode-firefox-debug
-          equinusocio.vsc-material-theme-icons
 
           # Python
           ms-python.python
@@ -135,7 +133,6 @@ in
           ryanluker.vscode-coverage-gutters
           markis.code-coverage
           hbenl.vscode-test-explorer
-          hbenl.test-adapter-converter
           ms-vscode.test-adapter-converter
 
           # Jupyter
@@ -157,12 +154,11 @@ in
           # Remote
           ms-vscode-remote.remote-ssh
           ms-vscode-remote.remote-ssh-edit
-          ms-vscode-remote.remote-explorer
 
           ms-vsliveshare.vsliveshare
 
           # Niche/hobby (ComputerCraft)
-          jackmacwindows.vscode-computercraft
+#           jackmacwindows.vscode-computercraft
           jackmacwindows.craftos-pc
 
           # Nix
@@ -172,12 +168,12 @@ in
     };
 
         userSettings = {
-          # Set by stlyix 
+          # Set by stylix
           # "workbench.colorTheme" = "Midnight Pastel";
           "workbench.iconTheme" = "material-icon-theme";
           "workbench.startupEditor" = "none";
 
-          # Set by stylix 
+          # Set by stylix
           # "editor.fontFamily" = "'FireCode Nerd Font', monospace";
           "editor.defaultFormatter" = "esbenp.prettier-vscode";
           "editor.formatOnSaveMode" = "modifications";

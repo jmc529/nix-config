@@ -1,7 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 let
   cfg = config.modules.optional.opencode;
-  # https://github.com/archie-judd/agent-sandbox.nix
   agentSandbox = import inputs.agent-sandbox-nix { inherit pkgs; };
 
   opencodeSandboxed = agentSandbox.mkSandbox {
@@ -22,8 +21,6 @@ let
 
     roFiles = [ "$HOME/.config/git/config" ];
 
-    # Ollama and mcp-nixos (if it ever needs to phone home) live locally;
-    # 11434 is the port that actually matters for talking to Ollama
     allowedHostPorts = [ 11434 ];
   };
 in
@@ -32,21 +29,19 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = [
-      # nix mcp (AI model context protocol) gives info on nix https://github.com/utensils/mcp-nixos
       pkgs.mcp-nixos
-      opencodeSandboxed
     ];
 
     programs.opencode = {
-      # https://opencode.ai/
       enable = true;
+      package = opencodeSandboxed;
       settings = {
         mcp.nixos = {
           type = "local";
           command = [ "mcp-nixos" ];
           environment.MCP_NIXOS_TRANSPORT = "stdio";
         };
-        model = "ollama/qwen2.5-coder:14b";
+        model = "ollama/qwen3-coder:30b";
         provider = {
           ollama = {
             npm = "@ai-sdk/openai-compatible";
@@ -55,8 +50,8 @@ in
               baseURL = "http://127.0.0.1:11434/v1";
             };
             models = {
-              "qwen2.5-coder:14b" = {
-                name = "Qwen 2.5 Coder 14B (Ollama)";
+              "qwen3-coder:30b" = {
+                name = "Qwen 3 Coder 30B (Ollama)";
               };
             };
           };
