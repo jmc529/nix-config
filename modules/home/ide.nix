@@ -24,7 +24,7 @@ in
     vscodium = {
       enable = true;
       package = pkgs.vscodium;
-      
+
       profiles.default = {
         extensions = with marketplace; [
           # general/editor/git/theme
@@ -51,6 +51,28 @@ in
           formulahendry.code-runner
           foxundermoon.shell-format
           rohit-gohri.format-code-action
+          dbaeumer.vscode-eslint
+          davidanson.vscode-markdownlint
+          yzhang.markdown-all-in-one
+          shd101wyy.markdown-preview-enhanced
+          vivaxy.vscode-conventional-commits
+          michaelcurrin.auto-commit-msg
+          github.vscode-pull-request-github
+          redhat.vscode-yaml
+          oderwat.indent-rainbow
+          shardulm94.trailing-spaces
+          chrmarti.regex
+          quicktype.quicktype
+          jock.svg
+          cssho.vscode-svgviewer
+          hediet.vscode-drawio
+          randomfractalsinc.vscode-data-preview
+          maziac.binary-file-viewer
+          deibit.devdocs
+          leetcode.vscode-leetcode
+          circleci.circleci
+          firefox-devtools.vscode-firefox-debug
+          equinusocio.vsc-material-theme-icons
 
           # Python
           ms-python.python
@@ -58,11 +80,73 @@ in
           ms-python.debugpy
           ms-python.black-formatter
           ms-python.vscode-python-envs
+          ms-python.isort
           njpwerner.autodocstring
 
           # Frontend
           svelte.svelte-vscode
+          ardenivanov.svelte-intellisense
+          fivethree.vscode-svelte-snippets
           zignd.html-css-class-completion
+          ecmel.vscode-html-css
+          bradlc.vscode-tailwindcss
+          vue.volar
+          octref.vetur
+          syler.sass-indented
+          graphql.vscode-graphql
+          graphql.vscode-graphql-syntax
+          ritwickdey.liveserver
+          ms-vscode.live-server
+
+          # C/C++
+          ms-vscode.cpptools
+          ms-vscode.cpptools-extension-pack
+          ms-vscode.cmake-tools
+          twxs.cmake
+          ms-vscode.makefile-tools
+          jeff-hykin.better-cpp-syntax
+          cschlosser.doxdocgen
+
+          # Java
+          redhat.java
+          vscjava.vscode-java-pack
+          vscjava.vscode-java-dependency
+          vscjava.vscode-maven
+          vscjava.vscode-gradle
+
+          # C#/.NET
+          ms-dotnettools.csharp
+          ms-dotnettools.vscode-dotnet-runtime
+
+          # Scala/Lua/Teal
+          scala-lang.scala
+          sumneko.lua
+          pdesaulniers.vscode-teal
+
+          # LaTeX
+          james-yu.latex-workshop
+
+          # SQL / DB
+          mtxr.sqltools
+          alexcvzz.vscode-sqlite
+
+          # Testing / coverage
+          firsttris.vscode-jest-runner
+          ryanluker.vscode-coverage-gutters
+          markis.code-coverage
+          hbenl.vscode-test-explorer
+          hbenl.test-adapter-converter
+          ms-vscode.test-adapter-converter
+
+          # Jupyter
+          ms-toolsai.jupyter
+          ms-toolsai.jupyter-keymap
+          ms-toolsai.jupyter-renderers
+          ms-toolsai.vscode-jupyter-cell-tags
+          ms-toolsai.vscode-jupyter-slideshow
+
+          # PDF
+          tomoki1207.pdf
 
           # Docker
           docker.docker
@@ -70,12 +154,22 @@ in
           ms-azuretools.vscode-containers
           ms-vscode-remote.remote-containers
 
+          # Remote
+          ms-vscode-remote.remote-ssh
+          ms-vscode-remote.remote-ssh-edit
+          ms-vscode-remote.remote-explorer
+
           ms-vsliveshare.vsliveshare
+
+          # Niche/hobby (ComputerCraft)
+          jackmacwindows.vscode-computercraft
+          jackmacwindows.craftos-pc
 
           # Nix
           jnoortheen.nix-ide
-          
         ];
+      };
+    };
 
         userSettings = {
           # Set by stlyix 
