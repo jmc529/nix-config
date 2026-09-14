@@ -26,6 +26,37 @@ in
       package = pkgs.vscodium;
 
       profiles.default = {
+        userSettings = {
+          # Set by stylix
+          # "workbench.colorTheme" = "Midnight Pastel";
+          "workbench.iconTheme" = "material-icon-theme";
+          "workbench.startupEditor" = "none";
+
+          # Set by stylix
+          # "editor.fontFamily" = "'FireCode Nerd Font', monospace";
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
+          "editor.formatOnSaveMode" = "modifications";
+          "editor.guides.bracketPairs" = true;
+
+          "git.autofetch" = true;
+          "git.confirmSync" = false;
+          "git.suggestSmartCommit" = true;
+
+          "telemetry.telemetryLevel" = "off";
+          "explorer.confirmDelete" = false;
+
+          "[python]" = {
+            "editor.formatOnType" = true;
+            "editor.formatOnSave" = true;
+            "editor.defaultFormatter" = "ms-python.blackformatter";
+          };
+
+          "cSpell.userWords" = [
+            "stylix"
+            "pkgs"
+          ];
+        };
+
         extensions = with marketplace; [
           # general/editor/git/theme
           aaron-bond.better-comments
@@ -164,39 +195,6 @@ in
           # Nix
           jnoortheen.nix-ide
         ];
-      };
-    };
-
-        userSettings = {
-          # Set by stylix
-          # "workbench.colorTheme" = "Midnight Pastel";
-          "workbench.iconTheme" = "material-icon-theme";
-          "workbench.startupEditor" = "none";
-
-          # Set by stylix
-          # "editor.fontFamily" = "'FireCode Nerd Font', monospace";
-          "editor.defaultFormatter" = "esbenp.prettier-vscode";
-          "editor.formatOnSaveMode" = "modifications";
-          "editor.guides.bracketPairs" = true;
-
-          "git.autofetch" = true;
-          "git.confirmSync" = false;
-          "git.suggestSmartCommit" = true;
-
-          "telemetry.telemetryLevel" = "off";
-          "explorer.confirmDelete" = false;
-
-          "[python]" = {
-            "editor.formatOnType" = true;
-            "editor.formatOnSave" = true;
-            "editor.defaultFormatter" = "ms-python.blackformatter";
-          };
-
-          "cSpell.userWords" = [
-            "stylix"
-            "pkgs"
-          ];
-        };
       };
     };
   };

@@ -5,7 +5,7 @@
     enable = true;
     image = "${inputs.self}/assets/ponyo-background.png";
     # 0x96f, danqing, decaf, material-darker, penumbra-dark
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/danqing.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/material-darker.yaml";
     polarity = "dark";
 
     fonts = {

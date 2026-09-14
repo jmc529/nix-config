@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-  programs = { 
+  programs = {
     zsh = {
       enable = true;
       autosuggestion.enable = true;
@@ -17,18 +17,18 @@
         cd = "z";
       };
     };
-  
+
     starship = {
       enable = true;
       enableZshIntegration = true;
       settings = builtins.fromTOML (builtins.readFile "${inputs.self}/assets/starship.toml");
     };
-  
+
     zoxide = {
       enable = true;
       enableZshIntegration = true;
     };
-  
+
     eza = {
       enable = true;
       enableZshIntegration = true;

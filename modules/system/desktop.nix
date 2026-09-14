@@ -21,5 +21,5 @@
     qrca
     elisa
     kde-gtk-config
-  ];  
+  ];
 }
