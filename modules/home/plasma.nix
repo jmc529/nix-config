@@ -29,6 +29,13 @@
           Rows = 2;
         };
       };
+
+      kdeglobals = {
+        General = {
+          TerminalApplication = "kitty";
+          TerminalService = "kitty.desktop";
+        };
+      };
     };
 
     desktop.widgets = [

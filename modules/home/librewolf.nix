@@ -19,9 +19,9 @@
       "browser.startup.page" = 3;
       "browser.bookmarks.defaultLocation" = "toolbar_____";
       "browser.toolbars.bookmarks.visibility" = "never";
-      "layout.css.prefers-color-scheme.content-override" = 0;
-      "browser.theme.content-theme" = 0;
-      "browser.theme.toolbar-theme" = 0;
+      "layout.css.prefers-color-scheme.content-override" = 2;
+      "browser.theme.content-theme" = 2;
+      "browser.theme.toolbar-theme" = 2;
     };
 
     policies = {

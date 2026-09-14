@@ -17,15 +17,12 @@
     devtoolbox
     gh
     httpie
-    lsd
     # nix doc format https://github.com/NixOS/nixfmt
     nixfmt
-    # https://nix-community.github.io/home-manager/options/home-manager/programs/oh-my-posh.html
-    oh-my-posh
     tealdeer
 
     # music
-    tidal-hifi
+    sone
 
     # Management
     bitwarden-desktop

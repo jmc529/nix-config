@@ -16,6 +16,10 @@
         ls = "eza --icons=auto";
         cd = "z";
       };
+
+      sessionVariables = {
+        EDITOR = "hx";
+      };
     };
 
     starship = {
