@@ -32,6 +32,9 @@ in
       pkgs.mcp-nixos
     ];
 
+    home.file.".config/opencode/.keep".text = "";
+    home.file.".local/share/opencode/.keep".text = "";
+
     programs.opencode = {
       enable = true;
       package = opencodeSandboxed;

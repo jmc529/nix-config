@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }:
 
 {
-  stylix = { 
+  stylix = {
     enable = true;
     image = "${inputs.self}/assets/ponyo-background.png";
     # 0x96f, danqing, decaf, material-darker, penumbra-dark
