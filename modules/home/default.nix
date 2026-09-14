@@ -9,7 +9,7 @@
     ./terminal.nix
   ];
 
-  home = { 
+  home = {
     username = "joe";
     homeDirectory = "/home/joe";
     stateVersion = "26.05";
@@ -17,7 +17,7 @@
 
   programs.home-manager.enable = true;
 
-  stylix.targets = { 
+  stylix.targets = {
     kde.enable = true;
     kitty.enable = true;
     obsidian.enable = true;

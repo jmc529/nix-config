@@ -8,7 +8,7 @@
         "Libinput/1267/12608/MSFT0001:00 04F3:3140 Touchpad".ClickMethod = 2;
         "Libinput/1267/12608/MSFT0001:00 04F3:3140 Touchpad".NaturalScroll = true;
       };
-    
+
       kwinrc = {
         Effect-colorblindnesscorrection.Intensity = 0.15;
         Effect-colorblindnesscorrection.Mode = 1;

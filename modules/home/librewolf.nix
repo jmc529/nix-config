@@ -19,6 +19,9 @@
       "browser.startup.page" = 3;
       "browser.bookmarks.defaultLocation" = "toolbar_____";
       "browser.toolbars.bookmarks.visibility" = "never";
+      "layout.css.prefers-color-scheme.content-override" = 0;
+      "browser.theme.content-theme" = 0;
+      "browser.theme.toolbar-theme" = 0;
     };
 
     policies = {
@@ -27,10 +30,7 @@
         "uBlock0@raymondhill.net" = { # uBlock Origin
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
-        };
-        "addon@darkreader.org" = { # Dark Reader
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
-          installation_mode = "force_installed";
+          default_area = "menupanel";
         };
         "{446900e4-71c2-419f-a6a7-df9c091e268b}" = { # Bitwarden Password Manager
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
@@ -39,6 +39,7 @@
         "jid1-MnnxcxisBPnSXQ@jetpack" = { # Privacy Badger
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
           installation_mode = "force_installed";
+          default_area = "menupanel";
         };
         "jid1-BoFifL9Vbdl2zQ@jetpack" = { # Decentraleyes
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/decentraleyes/latest.xpi";

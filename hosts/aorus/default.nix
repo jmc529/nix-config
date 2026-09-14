@@ -1,5 +1,12 @@
 { inputs, ... }:
 
+let
+  drives = {
+    "/mnt/hdd-1tb" = "5E42CC0142CBDC41";
+    "/mnt/ssd-1tb" = "FC96EEF396EEACF8";
+    "/mnt/ssd-256gb" = "FE3E12853E12375D";
+  };
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -25,6 +32,18 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+
+  fileSystems = builtins.mapAttrs (_: uuid: {
+    device = "/dev/disk/by-uuid/${uuid}";
+    fsType = "ntfs";
+    options = [
+      "defaults"
+      "nofail"
+      "uid=1000"
+      "gid=1000"
+      "umask=022"
+    ];
+  }) drives;
 
   system.stateVersion = "26.05";
 
