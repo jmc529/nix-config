@@ -2,7 +2,7 @@
   programs.librewolf = {
     enable = true;
     settings = {
-      "privacy.resistFingerprinting" = true; # spoof TZ & screen size
+      "privacy.resistFingerprinting" = false;
       "webgl.disabled" = false;
       "privacy.clearOnShutdown.history" = false;
       "privacy.clearOnShutdown.cookies" = false;
@@ -13,7 +13,6 @@
       "network.prefetch-next" = false;
       "signon.rememberSignons" = false;
       "browser.formfill.enable" = false;
-      "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
       "browser.urlbar.suggest.searches" = false;
       "browser.urlbar.showSearchSuggestionsFirst" = false;
       "browser.startup.page" = 3;
@@ -22,6 +21,7 @@
       "layout.css.prefers-color-scheme.content-override" = 2;
       "browser.theme.content-theme" = 2;
       "browser.theme.toolbar-theme" = 2;
+      "media.videocontrols.picture-in-picture.video-toggle.enabled" = false;
     };
 
     policies = {

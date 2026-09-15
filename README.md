@@ -20,6 +20,20 @@ nix run github:nix-community/plasma-manager > plasma-settings.nix
 sudo nixos-rebuild switch --flake ./#<name>
 ```
 
+### Develop
+
+```sh
+# To recreate the pre-commit, run:
+nix develop
+
+# Manual commands from the pre-commit
+nix run nixpkgs#statix -- check .
+nix run nixpkgs#deadnix -- .
+
+# To lint
+nix flake check
+```
+
 ## Secrets (sops-nix)
 
 Secrets (like the CircleCI token) are encrypted with [sops](https://github.com/getsops/sops)
@@ -75,17 +89,3 @@ opens the file decrypted in `$EDITOR`; add the key, save, and it's
 re-encrypted automatically to all current recipients. Then wire it up in
 `sops.nix` (`sops.secrets."name"`) or as a `sops.templates` entry if it
 needs to be merged into a generated config file.
-
-### Develop
-
-```sh
-# To recreate the pre-commit, run:
-nix develop
-
-# Manual commands from the pre-commit
-nix run nixpkgs#statix -- check .
-nix run nixpkgs#deadnix -- .
-
-# To lint
-nix flake check
-```
