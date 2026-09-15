@@ -36,9 +36,15 @@
       url = "github:archie-judd/agent-sandbox.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # https://github.com/Mic92/sops-nix
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, stylix, git-hooks, nix-vscode-extensions, agent-sandbox-nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, plasma-manager, stylix, git-hooks, nix-vscode-extensions, agent-sandbox-nix, sops-nix, ... }@inputs:
   let
     system = "x86_64-linux";
     specialArgs = { inherit inputs; };
@@ -50,13 +56,16 @@
         hostPath
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
+        sops-nix.nixosModules.sops
         { nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ]; }
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = specialArgs;
-            sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+            sharedModules = [
+              plasma-manager.homeModules.plasma-manager
+            ];
           };
         }
       ];

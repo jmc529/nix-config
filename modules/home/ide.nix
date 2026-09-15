@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ osConfig, config, lib, pkgs, ... }:
 
 let
   marketplace = pkgs.vscode-marketplace;
@@ -64,7 +64,6 @@ in
           naumovs.color-highlight
           editorconfig.editorconfig
           esbenp.prettier-vscode
-          mhutchie.git-graph
           waderyan.gitblame
           donjayamanne.githistory
           codezombiech.gitignore
@@ -73,7 +72,6 @@ in
           mechatroner.rainbow-csv
           streetsidesoftware.code-spell-checker
           pkief.material-icon-theme
-          benjaminmandersen.midnight-pastel
           simonsiefke.svg-preview
           tenninebt.vscode-koverage
           christian-kohler.path-intellisense
@@ -86,9 +84,7 @@ in
           davidanson.vscode-markdownlint
           yzhang.markdown-all-in-one
           shd101wyy.markdown-preview-enhanced
-          vivaxy.vscode-conventional-commits
           michaelcurrin.auto-commit-msg
-          github.vscode-pull-request-github
           redhat.vscode-yaml
           oderwat.indent-rainbow
           shardulm94.trailing-spaces
@@ -125,7 +121,6 @@ in
           graphql.vscode-graphql
           graphql.vscode-graphql-syntax
           ritwickdey.liveserver
-          ms-vscode.live-server
 
           # C/C++
           ms-vscode.cpptools
@@ -162,7 +157,6 @@ in
           # Testing / coverage
           firsttris.vscode-jest-runner
           ryanluker.vscode-coverage-gutters
-          markis.code-coverage
           hbenl.vscode-test-explorer
           ms-vscode.test-adapter-converter
 
@@ -178,18 +172,14 @@ in
 
           # Docker
           docker.docker
-          ms-azuretools.vscode-docker
           ms-azuretools.vscode-containers
           ms-vscode-remote.remote-containers
 
           # Remote
-          ms-vscode-remote.remote-ssh
-          ms-vscode-remote.remote-ssh-edit
-
           ms-vsliveshare.vsliveshare
 
           # Niche/hobby (ComputerCraft)
-#           jackmacwindows.vscode-computercraft
+          # jackmacwindows.vscode-computercraft
           jackmacwindows.craftos-pc
 
           # Nix
@@ -198,4 +188,9 @@ in
       };
     };
   };
+
+  home.file."${config.xdg.configHome}/VSCodium/User/settings.json".source = lib.mkForce (
+    config.lib.file.mkOutOfStoreSymlink
+      osConfig.sops.templates."vscodium-settings.json".path
+  );
 }
