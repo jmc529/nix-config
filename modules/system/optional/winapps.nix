@@ -11,13 +11,23 @@ in
     environment.systemPackages = [
       inputs.winapps.packages.${system}.winapps
       inputs.winapps.packages.${system}.winapps-launcher
-      pkgs.freerdp        # RDP client winapps shells out to
-      pkgs.dialog         # used by the winapps-setup TUI installer
+      pkgs.freerdp
+      pkgs.dialog
+      pkgs.iproute2   # winapps' scripts use `ip` to detect VM IPs
+      pkgs.libnotify  # desktop notifications on app launch/failure
+      pkgs.netcat     # port-probing to check if RDP is up before connecting
     ];
 
-    virtualisation.libvirtd.enable = true;
-    virtualisation.spiceUSBRedirection.enable = false; # optional, only if you want USB passthrough into the VM
-    programs.virt-manager.enable = true; # GUI for creating/managing the Windows VM
+    virtualisation.libvirtd = {
+      enable = true;
+      qemu = {
+        # Only needed if the guest is Windows 11 (TPM 2.0 + Secure Boot requirement)
+        swtpm.enable = true;
+        ovmf.enable = true;
+      };
+    };
+    virtualisation.spiceUSBRedirection.enable = false;
+    programs.virt-manager.enable = true;
 
     users.users."joe".extraGroups = [ "libvirtd" "kvm" ];
 
