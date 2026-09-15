@@ -6,8 +6,20 @@
   ];
 
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-  sops.defaultSopsFile = "${inputs.self}/secrets.yaml"; # adjust to actual repo-root-relative path
+  sops.defaultSopsFile = "${inputs.self}/secrets/sops.yaml";
+
   sops.secrets."vscodium-token" = {
     owner = "joe";
+  };
+
+  sops.templates."vscodium-settings.json" = {
+    owner = "joe";
+    content = builtins.toJSON (
+      config.home-manager.users.joe.programs.vscodium.profiles.default.userSettings
+      // {
+        "circleci.hostUrl" = "";
+        "circleci.apiToken" = config.sops.placeholder."vscodium-token";
+      }
+    );
   };
 }
