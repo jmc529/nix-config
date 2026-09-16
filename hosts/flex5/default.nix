@@ -35,7 +35,6 @@
     optional = {
       gaming.enable = false;
       ollama.enable = false;
-      winapps.enable = false;
     };
   };
 
@@ -43,7 +42,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    
+
     users.joe = {
       imports = [
         ../../modules/home
