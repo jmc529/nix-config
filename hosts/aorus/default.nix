@@ -54,7 +54,6 @@ in
     optional = {
       gaming.enable = true;
       ollama.enable = true;
-      winapps.enable = false;
     };
   };
 
