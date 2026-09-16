@@ -4,14 +4,15 @@
     settings = {
       "privacy.resistFingerprinting" = false;
       "webgl.disabled" = false;
-      "privacy.clearOnShutdown.history" = false;
-      "privacy.clearOnShutdown.cookies" = false;
+      "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = true;
+      "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
       "network.cookie.lifetimePolicy" = 0;
-      "privacy.donottrackheader.enabled" = true;
       "network.dns.disablePrefetch" = true;
       "network.predictor.enabled" = false;
       "network.prefetch-next" = false;
+      "network.trr.mode" = 2;
       "signon.rememberSignons" = false;
+      "sidebar.visibility" = "hide-on-close";
       "browser.formfill.enable" = false;
       "browser.urlbar.suggest.searches" = false;
       "browser.urlbar.showSearchSuggestionsFirst" = false;
@@ -65,10 +66,6 @@
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/tab-session-manager/latest.xpi";
           installation_mode = "force_installed";
         };
-        "@testpilot-containers" = { # Firefox Multi-Account Containers
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
-          installation_mode = "force_installed";
-        };
         "{a0370179-acc3-452f-9530-246b6adb2768}" = { # Svelte Devtools
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/svelte-devtools/latest.xpi";
           installation_mode = "force_installed";
@@ -90,6 +87,11 @@
         default = "ddg";
         privateDefault = "ddg";
         force = true;
+        engines = {
+          mojeek.metaData.hidden = true;
+          startpage.metaData.hidden = true;
+          wikipedia.metaData.hidden = true;
+        };
       };
       settings."browser.uiCustomization.state" = {
         placements = {

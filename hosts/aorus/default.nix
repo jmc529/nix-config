@@ -17,6 +17,9 @@ in
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
 
+  boot.kernelParams = [ "mem_sleep_default=s2idle" ];
+  hardware.enableRedistributableFirmware = true;
+
   networking.hostName = "aorus";
 
   time.timeZone = "America/New_York";

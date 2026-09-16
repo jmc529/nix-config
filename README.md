@@ -32,6 +32,12 @@ nix run nixpkgs#deadnix -- .
 
 # To lint
 nix flake check
+
+
+# To delete old gens
+sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+sudo nix-collect-garbage -d && sudo nix-store --gc
+
 ```
 
 ## Secrets (sops-nix)
