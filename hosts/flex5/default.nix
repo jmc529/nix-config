@@ -31,13 +31,6 @@
   # touch/rotation
   services.libinput.enable = true;
 
-  modules = {
-    optional = {
-      gaming.enable = false;
-      ollama.enable = false;
-    };
-  };
-
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -49,10 +42,9 @@
         ../../modules/home/optional
       ];
 
-      modules = { 
+      modules = {
         optional = {
           wine.enable = true;
-          opencode.enable = false;
         };
       };
     };

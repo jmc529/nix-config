@@ -2,6 +2,63 @@
 
 Personal NixOS config, built using plasma manager, sylix, flakes, and home manager.
 
+## Folder struct
+
+```sh
+nix/
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .sops.yaml
+├── flake.lock
+├── flake.nix
+├── README.md
+├── assets/
+│   ├── birb.png
+│   ├── ponyo-background.png
+│   ├── starship.toml
+│   └── TabSessionManager_Settings.json
+├── hosts/
+│   ├── aorus/
+│   │   ├── default.nix
+│   │   └── hardware-configuration.nix
+│   └── flex5/
+│       ├── default.nix
+│       └── hardware-configuration.nix
+├── modules/
+│   ├── home/
+│   │   ├── apps.nix
+│   │   ├── default.nix
+│   │   ├── git.nix
+│   │   ├── ide.nix
+│   │   ├── librewolf.nix
+│   │   ├── plasma.nix
+│   │   ├── shell.nix
+│   │   ├── terminal.nix
+│   │   └── optional/
+│   │       ├── default.nix
+│   │       ├── gaming-apps.nix
+│   │       ├── opencode.nix
+│   │       └── wine.nix
+│   └── system/
+│       ├── core.nix
+│       ├── default.nix
+│       ├── desktop.nix
+│       ├── docker.nix
+│       ├── networking.nix
+│       ├── sops.nix
+│       ├── storage.nix
+│       ├── theme.nix
+│       ├── users.nix
+│       └── optional/
+│           ├── audio-prod.nix
+│           ├── default.nix
+│           ├── gaming.nix
+│           ├── ollama.nix
+│           └── openrgb.nix
+└── secrets/
+    └── sops.yaml
+```
+
 ## Install
 
 On a machine with NixOS run:

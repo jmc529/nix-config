@@ -17,8 +17,17 @@ in
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
 
-  boot.kernelParams = [ "mem_sleep_default=s2idle" ];
-  hardware.enableRedistributableFirmware = true;
+  # One of these is causing my gpu fan to go crazy
+  # boot.kernelParams = [ "mem_sleep_default=s2idle" ];
+
+  hardware = {
+    # enableRedistributableFirmware = true;
+
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+  };
 
   networking.hostName = "aorus";
 
@@ -52,8 +61,10 @@ in
 
   modules = {
     optional = {
+      audio-prod.enable = true;
       gaming.enable = true;
       ollama.enable = true;
+      openrgb.enable = true;
     };
   };
 
@@ -70,7 +81,7 @@ in
 
       modules = {
         optional = {
-          wine.enable = false;
+          wine.enable = true;
           opencode.enable = true;
         };
       };

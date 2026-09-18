@@ -25,6 +25,7 @@ let
   };
 in
 {
+  # TODO: anyway to make this actually usable
   options.modules.optional.opencode.enable = lib.mkEnableOption "Opencode for running coding agents locally";
 
   config = lib.mkIf cfg.enable {
