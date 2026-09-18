@@ -6,13 +6,14 @@
     element-desktop
     discord
     signal-desktop
-    thunderbird
     quassel
+    mailspring
 
     # creative
     libreoffice
     obs-studio
     obsidian
+    p3x-onenote
 
     blender
     krita
@@ -37,6 +38,9 @@
     # nix doc format https://github.com/NixOS/nixfmt
     nixfmt
     tealdeer
+    tree                # Show file structure
+    bat                 # cat replacement
+    cmake               # Cross-platform open-source build system generator
     winboat
 
     # media

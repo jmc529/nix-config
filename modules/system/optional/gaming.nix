@@ -55,6 +55,7 @@ in
       # Software
       protonup-qt
       jdk21
+      r2modman
 
       # Performance / diagnostics
       mangohud
