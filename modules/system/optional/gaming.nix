@@ -14,24 +14,26 @@ in
       "proton-ge-bin"
     ];
 
-    programs.steam = {
-      enable = true;
+    programs = {
+      gamemode.enable = true;
 
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = false;
-      localNetworkGameTransfers.openFirewall = true;
+      gamescope = {
+        enable = true;
+        capSysNice = true;
+      };
 
-      gamescopeSession.enable = true;
+      steam = {
+        enable = true;
 
-      extraCompatPackages = [ pkgs.proton-ge-bin ];
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = false;
+        localNetworkGameTransfers.openFirewall = true;
+
+        gamescopeSession.enable = true;
+
+        extraCompatPackages = [ pkgs.proton-ge-bin ];
+      };
     };
-
-    programs.gamescope = {
-      enable = true;
-      capSysNice = true;
-    };
-
-    programs.gamemode.enable = true;
 
     powerManagement.cpuFreqGovernor = "performance";
 

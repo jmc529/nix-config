@@ -29,12 +29,16 @@ in
   options.modules.optional.opencode.enable = lib.mkEnableOption "Opencode for running coding agents locally";
 
   config = lib.mkIf cfg.enable {
-    home.packages = [
-      pkgs.mcp-nixos
-    ];
+    home = {
+      file = {
+        ".config/opencode/.keep".text = "";
+        ".local/share/opencode/.keep".text = "";
+      };
 
-    home.file.".config/opencode/.keep".text = "";
-    home.file.".local/share/opencode/.keep".text = "";
+      packages = [
+        pkgs.mcp-nixos
+      ];
+    };
 
     programs.opencode = {
       enable = true;
