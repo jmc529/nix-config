@@ -1,36 +1,66 @@
-# modules/optional/gaming.nix
 { config, lib, pkgs, ... }:
 let
   cfg = config.modules.optional.gaming;
 in
 {
-  options.modules.optional.gaming.enable = lib.mkEnableOption "gaming support (Steam, GameMode, graphics acceleration)";
+  options.modules.optional.gaming.enable = lib.mkEnableOption "Gaming support (Steam, GameMode, graphics acceleration)";
 
   config = lib.mkIf cfg.enable {
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "steam"
+      "steam-original"
+      "steam-unwrapped"
+      "steam-run"
+      "proton-ge-bin"
+    ];
+
     programs.steam = {
       enable = true;
+
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = false;
+      localNetworkGameTransfers.openFirewall = true;
+
       gamescopeSession.enable = true;
+
+      extraCompatPackages = [ pkgs.proton-ge-bin ];
+    };
+
+    programs.gamescope = {
+      enable = true;
+      capSysNice = true;
     };
 
     programs.gamemode.enable = true;
 
-    hardware.graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
+    powerManagement.cpuFreqGovernor = "performance";
 
     environment.systemPackages = with pkgs; [
-      itch                # itch.io client
+      # TODO: try itch/lutris/emulators more
+      # Game launchers
+      lutris
+      itch
 
-      dolphin-emu         # GameCube / Wii
-      pcsx2                # PS2
-      rpcs3                # PS3
-      melonds              # Nintendo DS
-      eden                  # Switch (actively-maintained Yuzu/Suyu successor)
-      mgba                 # GBA / GB / GBC
-      retroarch            # multi-system frontend + cores
+      # Emulators
+      dolphin-emu
+      pcsx2
+      rpcs3
+      melonds
+      eden
+      mgba
+      retroarch
+
+      # Software
+      protonup-qt
+      jdk21
+
+      # Performance / diagnostics
+      mangohud
+
+      # Minecraft
+      modrinth-app
+      mcaselector
+      prismlauncher
     ];
   };
 }

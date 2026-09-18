@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     git-hooks.url = "github:cachix/git-hooks.nix";
+    musnix.url = "github:musnix/musnix";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -27,11 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    winapps = {
-      url = "github:winapps-org/winapps";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     agent-sandbox-nix = {
       url = "github:archie-judd/agent-sandbox.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,7 +40,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, stylix, git-hooks, nix-vscode-extensions, agent-sandbox-nix, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, plasma-manager, stylix, git-hooks, nix-vscode-extensions, agent-sandbox-nix, sops-nix, musnix, ... }@inputs:
   let
     system = "x86_64-linux";
     specialArgs = { inherit inputs; };
@@ -56,6 +52,7 @@
         hostPath
         stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
+        musnix.nixosModules.musnix
         sops-nix.nixosModules.sops
         { nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ]; }
         {

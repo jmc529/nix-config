@@ -1,5 +1,6 @@
 {
   programs = {
+    # TODO: try ghostty: https://ghostty.org/
     kitty = {
       enable = true;
       settings = {

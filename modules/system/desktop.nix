@@ -19,7 +19,6 @@
     plasma-workspace-wallpapers
     khelpcenter
     qrca
-    elisa
     kde-gtk-config
   ];
 }
