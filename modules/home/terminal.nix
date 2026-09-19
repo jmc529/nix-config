@@ -8,10 +8,6 @@
       };
     };
 
-    zellij = {
-      enable = true;
-    };
-
     btop = {
       enable = true;
     };

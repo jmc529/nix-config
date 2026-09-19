@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -6,13 +6,14 @@
     element-desktop
     discord
     signal-desktop
-    thunderbird
     quassel
+    mailspring
 
     # creative
     libreoffice
     obs-studio
     obsidian
+    p3x-onenote
 
     blender
     krita
@@ -37,6 +38,9 @@
     # nix doc format https://github.com/NixOS/nixfmt
     nixfmt
     tealdeer
+    tree                # Show file structure
+    bat                 # cat replacement
+    cmake               # Cross-platform open-source build system generator
     winboat
 
     # media
@@ -47,5 +51,6 @@
     bitwarden-desktop
     # update nix pkgs https://github.com/Mic92/nix-update
     nix-update
+    (pkgs.callPackage "${inputs.self}/modules/packages/plasma6-eventcalendar.nix" { })
   ];
 }
