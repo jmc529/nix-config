@@ -29,28 +29,45 @@
 
 
     # dev tools
-    # TODO: unity is breaking need to review
-    unityhub
+    # Need to use 6.3 LTS
+    (unityhub.override {
+      extraLibs = pkgs: with pkgs; [
+        ncurses
+        libxml2
+        openssl
+        icu
+        zlib
+      ];
+    })
+    # cat replacement
+    bat
     bruno
+    cmake
     devtoolbox
     gh
     httpie
     # nix doc format https://github.com/NixOS/nixfmt
     nixfmt
     tealdeer
-    tree                # Show file structure
-    bat                 # cat replacement
-    cmake               # Cross-platform open-source build system generator
+    # Show file structure
+    tree
     winboat
 
     # media
     sone
     mpv
+    ffmpeg
+    openshot-qt
 
     # Management
     bitwarden-desktop
     # update nix pkgs https://github.com/Mic92/nix-update
     nix-update
     (pkgs.callPackage "${inputs.self}/modules/packages/plasma6-eventcalendar.nix" { })
+
+    # Wine
+    wineWow64Packages.stable
+    winetricks
+    bottles
   ];
 }

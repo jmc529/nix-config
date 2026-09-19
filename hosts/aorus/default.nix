@@ -81,7 +81,6 @@ in
 
       modules = {
         optional = {
-          wine.enable = true;
           opencode.enable = true;
         };
       };
