@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -51,5 +51,6 @@
     bitwarden-desktop
     # update nix pkgs https://github.com/Mic92/nix-update
     nix-update
+    (pkgs.callPackage "${inputs.self}/modules/packages/plasma6-eventcalendar.nix" { })
   ];
 }

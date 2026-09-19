@@ -111,7 +111,6 @@
                 "org.kde.plasma.networkmanagement"
                 "org.kde.plasma.keyboardlayout"
                 "org.kde.plasma.printmanager"
-                "com.github.k-donn.plasmoid-wunderground"
               ];
               knownItems = [
                 "org.kde.plasma.cameraindicator"
@@ -131,7 +130,6 @@
                 "org.kde.plasma.bluetooth"
                 "org.kde.plasma.weather"
               ];
-              shownItems = [ "com.github.k-donn.plasmoid-wunderground" ];
             };
           }
 
