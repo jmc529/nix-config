@@ -7,11 +7,9 @@ in
 
   config = lib.mkIf cfg.enable {
     musnix.enable = true;
-    musnix.rtcqs.enable = true;   # TODO: adds `rtcqs`, a CLI tool that audits your system
-                                  # review what it tells you what's still not audio-friendly
-
+    musnix.rtcqs.enable = true;
+    powerManagement.cpuFreqGovernor = "performance";
     users.users."joe".extraGroups = [ "audio" ];
-
     services.pipewire.jack.enable = true;
   };
 }

@@ -1,11 +1,7 @@
 {
   programs = {
-    # TODO: try ghostty: https://ghostty.org/
-    kitty = {
+    ghostty = {
       enable = true;
-      settings = {
-        confirm_os_window_close = 0;
-      };
     };
 
     btop = {

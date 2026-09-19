@@ -41,12 +41,6 @@
         ../../modules/home
         ../../modules/home/optional
       ];
-
-      modules = {
-        optional = {
-          wine.enable = true;
-        };
-      };
     };
   };
 }

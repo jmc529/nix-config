@@ -11,9 +11,13 @@ in
       ollama = {
         enable = true;
         package = pkgs.ollama-rocm;
-#         May need this if Ollama doesn't detect the 7800 XT correctly under ROCm (some RDNA3 cards need a gfx-version override)
-#         environmentVariablesHSA_OVERRIDE_GFX_VERSION = "11.0.0";
         loadModels = [ "qwen3-coder:30b" "gpt-oss:20b" ] ;
+        environmentVariables = {
+          OLLAMA_CONTEXT_LENGTH = "32768";
+          OLLAMA_FLASH_ATTENTION = "1";
+          OLLAMA_KV_CACHE_TYPE = "q8_0";   # halves KV cache memory
+          # HSA_OVERRIDE_GFX_VERSION = "11.0.0";  # only if the GPU isn't detected
+        };
       };
 
       # http://localhost:11434/ - ollama status

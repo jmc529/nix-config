@@ -28,11 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    agent-sandbox-nix = {
-      url = "github:archie-judd/agent-sandbox.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # https://github.com/Mic92/sops-nix
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -40,7 +35,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, stylix, git-hooks, nix-vscode-extensions, agent-sandbox-nix, sops-nix, musnix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, plasma-manager, stylix, git-hooks, nix-vscode-extensions, sops-nix, musnix, ... }@inputs:
   let
     system = "x86_64-linux";
     specialArgs = { inherit inputs; };

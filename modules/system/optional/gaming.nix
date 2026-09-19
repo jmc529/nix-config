@@ -1,6 +1,17 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.modules.optional.gaming;
+
+  itchWithWine = pkgs.symlinkJoin {
+    name = "itch-with-wine";
+    paths = [ pkgs.itch ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/itch \
+        --prefix PATH : ${lib.makeBinPath [ pkgs.wineWow64Packages.stable ]}
+    '';
+    meta.mainProgram = "itch";
+  };
 in
 {
   options.modules.optional.gaming.enable = lib.mkEnableOption "Gaming support (Steam, GameMode, graphics acceleration)";
@@ -15,6 +26,7 @@ in
     ];
 
     programs = {
+      firejail.enable = true;
       gamemode.enable = true;
 
       gamescope = {
@@ -38,10 +50,8 @@ in
     powerManagement.cpuFreqGovernor = "performance";
 
     environment.systemPackages = with pkgs; [
-      # TODO: try itch/lutris/emulators more
       # Game launchers
-      lutris
-      itch
+      itchWithWine
 
       # Emulators
       dolphin-emu
@@ -53,9 +63,10 @@ in
       retroarch
 
       # Software
-      protonup-qt
       jdk21
       r2modman
+      # https://github.com/sonic2kk/steamtinkerlaunch
+      steamtinkerlaunch
 
       # Performance / diagnostics
       mangohud
