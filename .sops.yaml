@@ -1,5 +1,5 @@
 keys:
-  - &aorus age12mj5jthfp84y7jdwjmm30trjkg7vcxwaz3dvaat2exjm7mysmszsk7vay4
+  - &aorus age1rakjuzre4p8gl2426uwrrc0e4tgmjuw9vlkc2pdlp03rtwcun3vsx73a63
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
