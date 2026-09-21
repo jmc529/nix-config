@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
   imports = [ inputs.nixcord.homeModules.nixcord ];
 
@@ -55,7 +55,7 @@
           enable = true;
 
           customEngineName = "DuckDuckGo";
-          customEngineURL = "https://duckduckgo.com";
+          customEngineUrl = "https://duckduckgo.com";
         };
 
         replyTimestamp.enable = true;
