@@ -7,6 +7,7 @@
     ./docker.nix
     ./networking.nix
     ./nix-ld.nix
+    ./sddm.nix
     ./sops.nix
     ./storage.nix
     ./theme.nix

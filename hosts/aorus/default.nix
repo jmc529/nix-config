@@ -72,12 +72,30 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
+    overwriteBackup = true;
 
-    users.joe = {
+    users.joe = { config, ... }: {
       imports = [
         ../../modules/home
         ../../modules/home/optional
       ];
+
+      xdg.userDirs = {
+        enable = true;
+        documents = "/mnt/ssd-256gb/Documents";
+        download = "/mnt/ssd-256gb/Downloads";
+        music = "/mnt/ssd-256gb/Music";
+        pictures = "/mnt/ssd-256gb/Pictures";
+        videos = "/mnt/ssd-256gb/Videos";
+      };
+
+      home.file = {
+        "Documents".source = config.lib.file.mkOutOfStoreSymlink "/mnt/ssd-256gb/Documents";
+        "Music".source = config.lib.file.mkOutOfStoreSymlink "/mnt/ssd-256gb/Music";
+        "Downloads".source = config.lib.file.mkOutOfStoreSymlink "/mnt/ssd-256gb/Downloads";
+        "Pictures".source = config.lib.file.mkOutOfStoreSymlink "/mnt/ssd-256gb/Pictures";
+        "Videos".source = config.lib.file.mkOutOfStoreSymlink "/mnt/ssd-256gb/Videos";
+      };
 
       modules = {
         optional = {

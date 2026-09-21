@@ -4,6 +4,7 @@
     ./git.nix
     ./ide.nix
     ./librewolf.nix
+    ./nixcord.nix
     ./plasma.nix
     ./shell.nix
     ./terminal.nix
@@ -19,11 +20,10 @@
 
   stylix.targets = {
     kde.enable = true;
-    kitty.enable = true;
+    ghostty.enable = true;
     obsidian.enable = true;
     opencode.enable = true;
     vscodium.enable = true;
-    zellij.enable = true;
     librewolf = {
       enable = true;
       fonts.override = {
