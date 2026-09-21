@@ -184,6 +184,7 @@ in
 
           # Nix
           jnoortheen.nix-ide
+          bbenoist.nix
         ];
       };
     };

@@ -6,6 +6,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     git-hooks.url = "github:cachix/git-hooks.nix";
     musnix.url = "github:musnix/musnix";
+    nixcord.url = "github:4evy/nixcord";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -35,7 +36,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, stylix, git-hooks, nix-vscode-extensions, sops-nix, musnix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, plasma-manager, stylix, git-hooks, nix-vscode-extensions, nixcord, sops-nix, musnix, ... }@inputs:
   let
     system = "x86_64-linux";
     specialArgs = { inherit inputs; };

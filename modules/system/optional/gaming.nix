@@ -56,11 +56,6 @@ in
       # Emulators
       dolphin-emu
       pcsx2
-      rpcs3
-      melonds
-      eden
-      mgba
-      retroarch
 
       # Software
       jdk21

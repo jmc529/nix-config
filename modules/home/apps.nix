@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     # messaging
     element-desktop
-    discord
     signal-desktop
     quassel
     mailspring
@@ -25,8 +24,6 @@
     audacity
     mixxx
     bitwig-studio
-    # TODO: try to add: https://github.com/Torbuntu/fl-studio-linux-setup
-
 
     # dev tools
     # Need to use 6.3 LTS
@@ -44,6 +41,7 @@
     bruno
     cmake
     devtoolbox
+    fastfetch
     gh
     httpie
     # nix doc format https://github.com/NixOS/nixfmt
@@ -51,7 +49,14 @@
     tealdeer
     # Show file structure
     tree
-    winboat
+
+    gcc
+    lua
+    jdk
+    nodejs
+    prettier
+    python3
+    typescript
 
     # media
     sone
@@ -64,10 +69,11 @@
     # update nix pkgs https://github.com/Mic92/nix-update
     nix-update
     (pkgs.callPackage "${inputs.self}/modules/packages/plasma6-eventcalendar.nix" { })
+    kdePackages.merkuro
 
-    # Wine
+    # Windows
+    # winboat - don't really need - Can remove bloatware in winboat with `irm christitus.com/win | iex`
     wineWow64Packages.stable
-    winetricks
     bottles
   ];
 }

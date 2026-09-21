@@ -20,6 +20,8 @@ nix run github:nix-community/plasma-manager > plasma-settings.nix
 sudo nixos-rebuild switch --flake ./#<name>
 ```
 
+- [Adding in FL Studio via bottles](https://github.com/Torbuntu/fl-studio-linux-setup) - can use the same bottle for [Aurora](https://aurorabuilder.com/)
+
 ### Develop
 
 ```sh
@@ -37,7 +39,6 @@ nix flake check
 # To delete old gens
 sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 sudo nix-collect-garbage -d && sudo nix-store --gc
-
 ```
 
 ## Secrets (sops-nix)

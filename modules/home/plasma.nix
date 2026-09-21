@@ -3,24 +3,51 @@
     enable = true;
 
     configFile = {
+      dolphinrc = {
+        "KFileDialog Settings" = {
+          "Places Icons Auto-resize" = false;
+          "Places Icons Static Size" = 22;
+        };
+      };
+
       kcminputrc = {
         "Libinput/1267/12608/MSFT0001:00 04F3:3140 Mouse".NaturalScroll = false;
         "Libinput/1267/12608/MSFT0001:00 04F3:3140 Touchpad".ClickMethod = 2;
         "Libinput/1267/12608/MSFT0001:00 04F3:3140 Touchpad".NaturalScroll = true;
       };
 
+      kded5rc.Module-browserintegrationreminder.autoload = false;
+
+      kdeglobals = {
+        General = {
+          TerminalApplication = "ghostty";
+          TerminalService = "ghostty.desktop";
+        };
+
+        "KFileDialog Settings" = {
+          "Breadcrumb Navigation" = false;
+          "Decoration position" = 0;
+          "Show Inline Previews" = false;
+          "Speedbar Width" = 214;
+        };
+      };
+
+      kiorc.Confirmations.ConfirmEmptyTrash = false;
+
+      ksplashrc.KSplash.Theme = "a2n.kuro.oled";
+
       kwinrc = {
         Effect-colorblindnesscorrection.Intensity = 0.15;
         Effect-colorblindnesscorrection.Mode = 1;
-        Plugins.colorblindnesscorrectionEnabled  = true;
+        Plugins.colorblindnesscorrectionEnabled = true;
+
+        Effect-overview.BorderActivate = 9;
+        NightColor.Active = true;
+        Xwayland.Scale = 1.125;
 
         TouchEdges.Bottom = "ApplicationLauncher";
 
         Desktops = {
-          Id_1 = "cb8c7fe7-4c9b-4180-90b9-3402cf334ad0";
-          Id_2 = "3851be88-a805-490d-ae01-b98d88171a5e";
-          Id_3 = "29f89636-53be-4944-9183-d3283580fe83";
-          Id_4 = "d42b8903-8506-485c-8743-2d39ffd7be80";
           Name_1 = "Main";
           Name_2 = "Dev";
           Name_3 = "Social";
@@ -30,27 +57,32 @@
         };
       };
 
-      kdeglobals = {
-        General = {
-          TerminalApplication = "kitty";
-          TerminalService = "kitty.desktop";
-        };
+      plasmanotifyrc = {
+        "Applications/Mailspring".Seen = true;
+        "Applications/com.usebottles.bottles".Seen = true;
+        "Applications/discord".Seen = true;
+        "Applications/itch".Seen = true;
+        "Applications/librewolf".Seen = true;
+        "Applications/signal".Seen = true;
+        "Applications/vesktop".Seen = true;
       };
+
+      plasmaparc.General.RaiseMaximumVolume = true;
     };
 
     desktop.widgets = [
-    {
-      name = "org.kde.plasma.colorpicker";
-      position = {
-        horizontal = 10;
-        vertical = 10;
-      };
-      size = {
-        width = 50;
-        height = 25;
-      };
-    }
-  ];
+      {
+        name = "org.kde.plasma.colorpicker";
+        position = {
+          horizontal = 10;
+          vertical = 10;
+        };
+        size = {
+          width = 50;
+          height = 25;
+        };
+      }
+    ];
 
     panels = [
       {
