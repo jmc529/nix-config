@@ -3,13 +3,39 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
-    git-hooks.url = "github:cachix/git-hooks.nix";
-    musnix.url = "github:musnix/musnix";
-    nixcord.url = "github:4evy/nixcord";
+
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    musnix = {
+      url = "github:musnix/musnix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixcord = {
+      url = "github:4evy/nixcord";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -23,20 +49,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # https://github.com/Mic92/sops-nix
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, stylix, git-hooks, nix-vscode-extensions, nixcord, sops-nix, musnix, ... }@inputs:
+  outputs = { self, git-hooks, home-manager, musnix, nixcord, nixpkgs, nix-vscode-extensions, plasma-manager, sops-nix, stylix, ... }@inputs:
   let
     system = "x86_64-linux";
     specialArgs = { inherit inputs; };
@@ -46,10 +61,10 @@
       inherit specialArgs;
       modules = [
         hostPath
-        stylix.nixosModules.stylix
         home-manager.nixosModules.home-manager
         musnix.nixosModules.musnix
         sops-nix.nixosModules.sops
+        stylix.nixosModules.stylix
         { nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ]; }
         {
           home-manager = {

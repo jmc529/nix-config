@@ -69,11 +69,6 @@ in
   };
 
   home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = "backup";
-    overwriteBackup = true;
-
     users.joe = { config, ... }: {
       imports = [
         ../../modules/home
