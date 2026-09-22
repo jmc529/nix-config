@@ -32,11 +32,6 @@
   services.libinput.enable = true;
 
   home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = "backup";
-    overwriteBackup = true;
-
     users.joe = {
       imports = [
         ../../modules/home

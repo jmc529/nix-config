@@ -49,9 +49,11 @@
     tealdeer
     # Show file structure
     tree
+    wget2
 
     gcc
     lua
+    luaPackages.tl
     jdk
     nodejs
     prettier

@@ -126,7 +126,6 @@ in
           ms-vscode.cpptools
           ms-vscode.cpptools-extension-pack
           ms-vscode.cmake-tools
-          twxs.cmake
           ms-vscode.makefile-tools
           jeff-hykin.better-cpp-syntax
           cschlosser.doxdocgen
@@ -179,7 +178,9 @@ in
           ms-vsliveshare.vsliveshare
 
           # Niche/hobby (ComputerCraft)
-          # jackmacwindows.vscode-computercraft
+          (jackmacwindows.vscode-computercraft.overrideAttrs (old: {
+            postInstall = "";
+          }))
           jackmacwindows.craftos-pc
 
           # Nix
