@@ -4,8 +4,7 @@
 
   programs.nixcord = {
     enable = true;
-    discord.equicord.enable = true;
-    vesktop.enable = true;
+    equibop.enable = true;
 
     config = {
       plugins = {

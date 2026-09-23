@@ -54,6 +54,7 @@
     gcc
     lua
     luaPackages.tl
+    luaPackages.cyan
     jdk
     nodejs
     prettier
