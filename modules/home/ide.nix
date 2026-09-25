@@ -59,45 +59,29 @@ in
 
         extensions = with marketplace; [
           # general/editor/git/theme
+          gruntfuggly.todo-tree
           aaron-bond.better-comments
-          anseki.vscode-color
+          oderwat.indent-rainbow
           naumovs.color-highlight
+          mechatroner.rainbow-csv
+          shardulm94.trailing-spaces
+          streetsidesoftware.code-spell-checker
           editorconfig.editorconfig
           esbenp.prettier-vscode
-          waderyan.gitblame
-          donjayamanne.githistory
-          codezombiech.gitignore
-          gruntfuggly.todo-tree
-          wayou.vscode-todo-highlight
-          mechatroner.rainbow-csv
-          streetsidesoftware.code-spell-checker
+          dbaeumer.vscode-eslint
+          chrmarti.regex
           pkief.material-icon-theme
-          simonsiefke.svg-preview
-          tenninebt.vscode-koverage
           christian-kohler.path-intellisense
           christian-kohler.npm-intellisense
           formulahendry.auto-close-tag
-          formulahendry.code-runner
-          foxundermoon.shell-format
-          rohit-gohri.format-code-action
-          dbaeumer.vscode-eslint
-          davidanson.vscode-markdownlint
-          yzhang.markdown-all-in-one
-          shd101wyy.markdown-preview-enhanced
-          michaelcurrin.auto-commit-msg
-          redhat.vscode-yaml
-          oderwat.indent-rainbow
-          shardulm94.trailing-spaces
-          chrmarti.regex
-          quicktype.quicktype
-          jock.svg
-          hediet.vscode-drawio
-          randomfractalsinc.vscode-data-preview
-          maziac.binary-file-viewer
           deibit.devdocs
           leetcode.vscode-leetcode
-          circleci.circleci
-          firefox-devtools.vscode-firefox-debug
+          ms-vsliveshare.vsliveshare
+
+          # Git
+          waderyan.gitblame
+          donjayamanne.githistory
+          codezombiech.gitignore
 
           # Python
           ms-python.python
@@ -109,14 +93,14 @@ in
           njpwerner.autodocstring
 
           # Frontend
+          firefox-devtools.vscode-firefox-debug
+          circleci.circleci
           svelte.svelte-vscode
           ardenivanov.svelte-intellisense
           fivethree.vscode-svelte-snippets
           zignd.html-css-class-completion
           ecmel.vscode-html-css
           bradlc.vscode-tailwindcss
-          vue.volar
-          octref.vetur
           syler.sass-indented
           graphql.vscode-graphql
           graphql.vscode-graphql-syntax
@@ -145,9 +129,8 @@ in
           scala-lang.scala
           sumneko.lua
           pdesaulniers.vscode-teal
-
-          # LaTeX
-          james-yu.latex-workshop
+          (jackmacwindows.vscode-computercraft.overrideAttrs {postInstall = "";})
+          jackmacwindows.craftos-pc
 
           # SQL / DB
           mtxr.sqltools
@@ -158,6 +141,7 @@ in
           ryanluker.vscode-coverage-gutters
           hbenl.vscode-test-explorer
           ms-vscode.test-adapter-converter
+          tenninebt.vscode-koverage
 
           # Jupyter
           ms-toolsai.jupyter
@@ -166,22 +150,23 @@ in
           ms-toolsai.vscode-jupyter-cell-tags
           ms-toolsai.vscode-jupyter-slideshow
 
-          # PDF
+          # Data/Text - PDF/MD/Latex/SVG
           tomoki1207.pdf
+          jock.svg
+          simonsiefke.svg-preview
+          randomfractalsinc.vscode-data-preview
+          maziac.binary-file-viewer
+          hediet.vscode-drawio
+          james-yu.latex-workshop
+          foxundermoon.shell-format
+          davidanson.vscode-markdownlint
+          shd101wyy.markdown-preview-enhanced
+          redhat.vscode-yaml
 
           # Docker
           docker.docker
           ms-azuretools.vscode-containers
           ms-vscode-remote.remote-containers
-
-          # Remote
-          ms-vsliveshare.vsliveshare
-
-          # Niche/hobby (ComputerCraft)
-          (jackmacwindows.vscode-computercraft.overrideAttrs (old: {
-            postInstall = "";
-          }))
-          jackmacwindows.craftos-pc
 
           # Nix
           jnoortheen.nix-ide

@@ -8,7 +8,6 @@
     };
 
     desktopManager.plasma6.enable = true;
-    # firmware updates since I am removing discover; CLI fwupdmgr
     fwupd.enable = true;
   };
 
