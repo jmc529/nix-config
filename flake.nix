@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hearthstone = {
+      url = "github:DawnMagnet/hearthstone-linux-gui";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,7 +56,7 @@
     };
   };
 
-  outputs = { self, git-hooks, home-manager, musnix, nixcord, nixpkgs, nix-vscode-extensions, plasma-manager, sops-nix, stylix, ... }@inputs:
+  outputs = { self, git-hooks, home-manager, musnix, nixpkgs, nix-vscode-extensions, plasma-manager, sops-nix, stylix, ... }@inputs:
   let
     system = "x86_64-linux";
     specialArgs = { inherit inputs; };

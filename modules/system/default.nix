@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   imports = [
     ./core.nix
@@ -9,7 +7,6 @@
     ./nix-ld.nix
     ./sddm.nix
     ./sops.nix
-    ./storage.nix
     ./theme.nix
     ./users.nix
   ];

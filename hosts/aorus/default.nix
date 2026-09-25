@@ -10,24 +10,13 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    ./hardware-tuning.nix
     ../../modules/system
     ../../modules/system/optional
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-gpu-amd
     inputs.nixos-hardware.nixosModules.common-pc-ssd
   ];
-
-  # One of these is causing my gpu fan to go crazy
-  # boot.kernelParams = [ "mem_sleep_default=s2idle" ];
-
-  hardware = {
-    # enableRedistributableFirmware = true;
-
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
-  };
 
   networking.hostName = "aorus";
 
@@ -64,7 +53,6 @@ in
       audio-prod.enable = true;
       gaming.enable = true;
       ollama.enable = true;
-      openrgb.enable = true;
     };
   };
 

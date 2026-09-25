@@ -1,6 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
+
+
 let
   cfg = config.modules.optional.gaming;
+
+  hearthstone = inputs.hearthstone.packages.${pkgs.stdenv.hostPlatform.system}.default ;
 
   itchWithWine = pkgs.symlinkJoin {
     name = "itch-with-wine";
@@ -62,6 +66,7 @@ in
       r2modman
       # https://github.com/sonic2kk/steamtinkerlaunch
       steamtinkerlaunch
+      hearthstone
 
       # Performance / diagnostics
       mangohud

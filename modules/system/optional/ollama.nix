@@ -11,18 +11,15 @@ in
       ollama = {
         enable = true;
         package = pkgs.ollama-rocm;
-        loadModels = [ "qwen3-coder:30b" "gpt-oss:20b" ] ;
+        loadModels = [ "glm-4.7-flash" "qwen3-coder:30b" "gpt-oss:20b" ] ;
         environmentVariables = {
+          OLLAMA_MAX_LOADED_MODELS = "1";
           OLLAMA_CONTEXT_LENGTH = "32768";
           OLLAMA_FLASH_ATTENTION = "1";
-          OLLAMA_KV_CACHE_TYPE = "q8_0";   # halves KV cache memory
-          # HSA_OVERRIDE_GFX_VERSION = "11.0.0";  # only if the GPU isn't detected
+          OLLAMA_KV_CACHE_TYPE = "q8_0";
+          OLLAMA_NUM_GPU_LAYERS = "100";
         };
       };
-
-      # http://localhost:11434/ - ollama status
-      # http://localhost:8080/ - ai chat webpage
-      open-webui.enable = true;
     };
   };
 }
