@@ -4,6 +4,7 @@
 
   programs.nixcord = {
     enable = true;
+    discord.enable = false;
     equibop.enable = true;
 
     config = {
