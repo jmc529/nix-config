@@ -9,6 +9,7 @@ in
     home = {
       packages = [
         pkgs.mcp-nixos
+        pkgs.bubblewrap
       ];
     };
 
@@ -33,7 +34,6 @@ in
         permission = {
           edit = "ask";
           bash = {
-            "*" = "allow";
             "git push *" = "ask";
             "rm -rf *" = "deny";
           };
