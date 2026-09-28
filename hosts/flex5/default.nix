@@ -37,6 +37,8 @@
         ../../modules/home
         ../../modules/home/optional
       ];
+
+      modules.optional.opencode.enable = true;
     };
   };
 }
