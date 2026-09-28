@@ -80,11 +80,7 @@ in
         "Videos".source = config.lib.file.mkOutOfStoreSymlink "/mnt/ssd-256gb/Videos";
       };
 
-      modules = {
-        optional = {
-          opencode.enable = true;
-        };
-      };
+      modules.optional.opencode.enable = true;
     };
   };
 }
