@@ -41,17 +41,21 @@ sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 sudo nix-collect-garbage -d && sudo nix-store --gc
 ```
 
-## Secrets (sops-nix)
+## Secrets (agenix)
 
-Secrets (like the CircleCI token) are encrypted with [sops](https://github.com/getsops/sops)
-and decrypted per-machine using that machine's SSH host key, converted to an
-age key. Because of that, a brand-new machine can't decrypt anything until
-it's been added as a recipient.
+Secrets (like the CircleCI token) are encrypted with [agenix](https://github.com/ryantm/agenix)
+and decrypted during activation using that machine's SSH host key. Because
+of that, a brand-new machine can't decrypt anything until it's been added as a
+recipient.
+
+The recipients live in `secrets/agenix-rules.nix`; the encrypted files sit
+next to it as `secrets/<name>.age`. Each one is wired up in
+`modules/system/agenix.nix` and decrypted to `/run/agenix/<name>`.
 
 ### Adding a new machine as a secrets recipient
 
 This only needs to be done once per new machine, and needs to happen
-**before** the first `nixos-rebuild switch` that pulls in `sops.nix`,
+**before** the first `nixos-rebuild switch` that pulls in `agenix.nix`,
 otherwise the activation will fail trying to decrypt secrets it isn't a
 recipient for yet.
 
@@ -59,40 +63,46 @@ recipient for yet.
    `services.openssh.enable = true` so its host key exists at
    `/etc/ssh/ssh_host_ed25519_key`.
 
-2. Get that host's SSH key as an age public key:
+2. Add that host key to `secrets/agenix-rules.nix`:
 
 ```sh
-   nix run nixpkgs#ssh-to-age -- -i /etc/ssh/ssh_host_ed25519_key.pub
+   cat /etc/ssh/ssh_host_ed25519_key.pub
 ```
 
-3. Add the resulting `age1...` key to `.sops.yaml` at the repo root, under
-   a new anchor (e.g. `&newhostname`), and add it to the `age:` list for
-   the relevant `path_regex`.
-
-4. From a machine that can **already** decrypt the secrets (i.e. one
-   already listed as a recipient), re-key the existing secrets files so
-   the new machine can decrypt them too:
+3. From a machine that can **already** decrypt the secrets (i.e. one
+   already listed as a recipient), re-encrypt every secret for the new
+   recipients:
 
 ```sh
-   nix run nixpkgs#sops -- updatekeys secrets/sops.yaml
+   nix run github:ryantm/agenix -- -r
 ```
 
-   (`updatekeys` re-wraps the existing encrypted data key for every
-   recipient currently listed in `.sops.yaml` — just adding the new
-   recipient to `.sops.yaml` alone does **not** retroactively grant it
-   access.)
+   (`-r`/`--rekey` re-encrypts the secrets listed in `agenix-rules.nix`.
+   Just adding a recipient to `agenix-rules.nix` alone does **not**
+   retroactively grant it access.)
 
-5. Commit both the updated `.sops.yaml` and the re-keyed `secrets/sops.yaml`,
-   pull them onto the new machine, then proceed with the normal install
-   steps below.
+4. Commit both the updated `secrets/agenix-rules.nix` and the re-encrypted
+   `secrets/*.age` files, pull them onto the new machine, then proceed with
+   the normal install steps above.
 
 ### Adding a new secret
 
 ```sh
-nix run nixpkgs#sops -- secrets/sops.yaml
+nix run github:ryantm/agenix -- -e secrets/<name>.age
 ```
 
-opens the file decrypted in `$EDITOR`; add the key, save, and it's
-re-encrypted automatically to all current recipients. Then wire it up in
-`sops.nix` (`sops.secrets."name"`) or as a `sops.templates` entry if it
-needs to be merged into a generated config file.
+opens the file decrypted in `$EDITOR`; add the value, save, and it's
+re-encrypted automatically for every recipient in `agenix-rules.nix`. Then
+declare it in `modules/system/agenix.nix` as an `age.secrets` entry and
+reference `config.age.secrets.<name>.path` from whatever consumes it.
+
+### Secrets that need to be merged into a generated file
+
+agenix only decrypts whole files, so it has no equivalent of sops-nix's
+`templates`. For the CircleCI token, `modules/home/ide.nix` handles it
+instead: the VSCodium settings are declared normally (and Home Manager
+merges them into `settings.json` on every activation because
+`mutableUserSettings` is set), and the
+`vscodium-settings-token` user unit merges the decrypted token in with
+`jq` at login. Because the token is not one of the settings Home Manager
+knows about, it survives every subsequent activation.
