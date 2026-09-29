@@ -1,12 +1,12 @@
 {
   imports = [
+    ./agenix.nix
     ./core.nix
     ./desktop.nix
     ./docker.nix
     ./networking.nix
     ./nix-ld.nix
     ./sddm.nix
-    ./sops.nix
     ./theme.nix
     ./users.nix
   ];

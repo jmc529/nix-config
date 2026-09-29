@@ -1,4 +1,4 @@
-{ osConfig, config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   marketplace = pkgs.vscode-marketplace;
@@ -14,11 +14,13 @@ in
           select = "underline";
         };
       };
-      languages.language = [{
-        name = "nix";
-        auto-format = true;
-        formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
-      }];
+      languages.language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+        }
+      ];
     };
 
     vscodium = {
@@ -26,6 +28,8 @@ in
       package = pkgs.vscodium;
 
       profiles.default = {
+        mutableUserSettings = true;
+
         userSettings = {
           # Set by stylix
           # "workbench.colorTheme" = "Midnight Pastel";
@@ -129,7 +133,7 @@ in
           scala-lang.scala
           sumneko.lua
           pdesaulniers.vscode-teal
-          (jackmacwindows.vscode-computercraft.overrideAttrs {postInstall = "";})
+          (jackmacwindows.vscode-computercraft.overrideAttrs { postInstall = ""; })
           jackmacwindows.craftos-pc
 
           # SQL / DB
@@ -175,9 +179,4 @@ in
       };
     };
   };
-
-  home.file."${config.xdg.configHome}/VSCodium/User/settings.json".source = lib.mkForce (
-    config.lib.file.mkOutOfStoreSymlink
-      osConfig.sops.templates."vscodium-settings.json".path
-  );
 }

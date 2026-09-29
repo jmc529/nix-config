@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,11 +44,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,49 +56,49 @@
     };
   };
 
-  outputs = { self, git-hooks, home-manager, musnix, nixpkgs, nix-vscode-extensions, plasma-manager, sops-nix, stylix, ... }@inputs:
-  let
-    system = "x86_64-linux";
-    specialArgs = { inherit inputs; };
-    pkgs = nixpkgs.legacyPackages.${system};
+  outputs = { self, agenix, git-hooks, home-manager, musnix, nixpkgs, nix-vscode-extensions, plasma-manager, stylix, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      pkgs = nixpkgs.legacyPackages.${system};
 
-    mkHost = hostPath: nixpkgs.lib.nixosSystem {
-      inherit specialArgs;
-      modules = [
-        hostPath
-        home-manager.nixosModules.home-manager
-        musnix.nixosModules.musnix
-        sops-nix.nixosModules.sops
-        stylix.nixosModules.stylix
-        { nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ]; }
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = specialArgs;
-            sharedModules = [
-              plasma-manager.homeModules.plasma-manager
-            ];
-          };
-        }
-      ];
-    };
-  in
-  {
-    nixosConfigurations = {
-      flex5 = mkHost ./hosts/flex5;
-      aorus = mkHost ./hosts/aorus;
-    };
+      mkHost = hostPath: nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
+          modules = [
+            hostPath
+            agenix.nixosModules.default
+            home-manager.nixosModules.home-manager
+            musnix.nixosModules.musnix
+            stylix.nixosModules.stylix
+            { nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ]; }
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = specialArgs;
+                sharedModules = [
+                  plasma-manager.homeModules.plasma-manager
+                ];
+              };
+            }
+          ];
+        };
+    in
+    {
+      nixosConfigurations = {
+        flex5 = mkHost ./hosts/flex5;
+        aorus = mkHost ./hosts/aorus;
+      };
 
-    checks.${system}.pre-commit-check = git-hooks.lib.${system}.run {
-      src = ./.;
-      hooks.deadnix.enable = true;
-      hooks.statix.enable = true;
-    };
+      checks.${system}.pre-commit-check = git-hooks.lib.${system}.run {
+        src = ./.;
+        hooks.deadnix.enable = true;
+        hooks.statix.enable = true;
+      };
 
-    devShells.${system}.default = pkgs.mkShell {
-      inherit (self.checks.${system}.pre-commit-check) shellHook;
-      buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+      devShells.${system}.default = pkgs.mkShell {
+        inherit (self.checks.${system}.pre-commit-check) shellHook;
+        buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+      };
     };
-  };
 }

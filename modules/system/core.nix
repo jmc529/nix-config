@@ -1,12 +1,28 @@
-{
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
-  nixpkgs.config.allowUnfree = true;
+{ lib, ... }:
 
-  # Trim old gens
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 7d";
+{
+  nixpkgs.config.allowUnfree = true;
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+
+    optimise.automatic = true;
+
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+  };
+
+  system.autoUpgrade = {
+    enable = true;
+    dates = lib.mkDefault "weekly";
   };
 
   boot.loader.systemd-boot.enable = true;
