@@ -4,6 +4,7 @@
 let
   cfg = config.modules.optional.gaming;
 
+  amethyst = inputs.amethyst.packages.${pkgs.stdenv.hostPlatform.system}.default;
   hearthstone = inputs.hearthstone.packages.${pkgs.stdenv.hostPlatform.system}.default ;
 
   itchWithWine = pkgs.symlinkJoin {
@@ -61,11 +62,12 @@ in
       dolphin-emu
       pcsx2
 
-      # Software
+      # Software/Modloaders
+      amethyst
       jdk21
       r2modman
-      # https://github.com/sonic2kk/steamtinkerlaunch
-      steamtinkerlaunch
+
+      # Games
       hearthstone
 
       # Performance / diagnostics
