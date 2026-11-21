@@ -1,10 +1,20 @@
 { inputs, ... }:
 
 let
-  drives = {
-    "/mnt/hdd-1tb" = "5E42CC0142CBDC41";
-    "/mnt/ssd-1tb" = "FC96EEF396EEACF8";
-    "/mnt/ssd-256gb" = "FE3E12853E12375D";
+  ext4_drives = {
+    "/mnt/ssd-256gb" = "39b9482e-365a-4081-92f7-13ee34f5a24d";
+    "/mnt/ssd-500gb" = "5b2b4bd5-fd4b-4254-84b8-f003013e7aeb";
+    "/mnt/ssd-1tb" = "5311eda3-c1cc-49ad-938b-f596340a5972";
+    "/mnt/hdd-1tb" = "010e3a06-7cfd-47ab-a713-5c0a736a45e5";
+  };
+
+  mkExt4 = _: uuid: {
+    device = "/dev/disk/by-uuid/${uuid}";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "nofail"
+    ];
   };
 in
 {
@@ -34,17 +44,7 @@ in
     LC_TIME = "en_US.UTF-8";
   };
 
-  fileSystems = builtins.mapAttrs (_: uuid: {
-    device = "/dev/disk/by-uuid/${uuid}";
-    fsType = "ntfs";
-    options = [
-      "defaults"
-      "nofail"
-      "uid=1000"
-      "gid=1000"
-      "umask=022"
-    ];
-  }) drives;
+  fileSystems = (builtins.mapAttrs mkExt4 ext4_drives);
 
   system.stateVersion = "26.05";
 
@@ -57,6 +57,8 @@ in
   };
 
   home-manager = {
+    backupFileExtension = "backup";
+
     users.joe = { config, ... }: {
       imports = [
         ../../modules/home
